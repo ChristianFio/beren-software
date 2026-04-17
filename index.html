@@ -1,107 +1,275 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beren Software</title>
+  <title>Beren Software — IT Integration & Digital Solutions</title>
+  <meta name="description" content="Beren Software: system integration, infrastrutture IT e soluzioni AI per enterprise. Partner tecnologico per ambienti complessi e ad alta criticità.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0a0a1a;
-      color: #e2e8f0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .container { max-width: 700px; padding: 40px 24px; text-align: center; }
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 900;
-      letter-spacing: 3px;
-      color: #00f5ff;
-      text-shadow: 0 0 30px rgba(0,245,255,0.3);
-      margin-bottom: 8px;
-    }
-    .tagline {
-      font-size: 1.1rem;
-      color: #8888aa;
-      margin-bottom: 48px;
-      letter-spacing: 1px;
-    }
-    .divider {
-      width: 120px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #00f5ff, transparent);
-      margin: 0 auto 48px;
-    }
-    .product {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(0,245,255,0.15);
-      border-radius: 8px;
-      padding: 32px;
-      margin-bottom: 32px;
-      text-align: left;
-    }
-    .product h2 {
-      font-size: 1.3rem;
-      color: #e2e8f0;
-      margin-bottom: 8px;
-    }
-    .product p {
-      color: #8888aa;
-      line-height: 1.7;
-      font-size: 0.95rem;
-    }
-    .product a {
-      color: #00f5ff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .product a:hover { text-decoration: underline; }
-    .contact {
-      margin-top: 48px;
-      font-size: 0.85rem;
-      color: #404060;
-    }
-    .contact a { color: #606080; }
-    .badge {
-      display: inline-block;
-      background: #00f5ff;
-      color: #0a0a1a;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 3px;
-      letter-spacing: 1px;
-      margin-left: 8px;
-      vertical-align: middle;
+    :root{--bg:#06060f;--surface:#0d0d1a;--surface2:#141428;--border:rgba(0,245,255,0.12);--text:#e2e8f0;--dim:#6b7280;--cyan:#00f5ff;--pink:#ff00a0;--green:#00ff88}
+    *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--cyan);text-decoration:none;transition:opacity .2s}a:hover{opacity:.8}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+    .mono{font-family:'JetBrains Mono',monospace}
+    .section-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:3px;color:var(--cyan);text-transform:uppercase;margin-bottom:12px}
+    .section-title{font-size:2rem;font-weight:900;line-height:1.2;margin-bottom:16px}
+    .section-desc{font-size:1.05rem;color:var(--dim);max-width:600px;line-height:1.8}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,15,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px}
+    nav .inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    nav .logo{font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--cyan);letter-spacing:2px}
+    nav .logo span{color:var(--dim);font-weight:400}
+    nav ul{list-style:none;display:flex;gap:32px}
+    nav ul li a{color:var(--dim);font-size:.85rem;font-weight:500;letter-spacing:.5px;transition:color .2s}
+    nav ul li a:hover{color:var(--text);opacity:1}
+    nav .cta-btn{background:var(--cyan);color:var(--bg);padding:8px 20px;border-radius:4px;font-size:.8rem;font-weight:700;letter-spacing:1px}
+
+    .hero{min-height:100vh;display:flex;align-items:center;background:radial-gradient(ellipse at 30% 50%,rgba(0,245,255,.05) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(255,0,160,.03) 0%,transparent 50%);padding-top:64px}
+    .hero-content{max-width:700px}
+    .hero h1{font-size:3.2rem;font-weight:900;line-height:1.1;margin-bottom:24px}
+    .hero h1 .accent{color:var(--cyan)}
+    .hero p{font-size:1.15rem;color:var(--dim);margin-bottom:40px;max-width:560px}
+    .hero-stats{display:flex;gap:48px;margin-top:48px;border-top:1px solid var(--border);padding-top:32px}
+    .hero-stat .num{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:700;color:var(--cyan)}
+    .hero-stat .label{font-size:.8rem;color:var(--dim);margin-top:4px}
+
+    .sectors{padding:80px 0;border-top:1px solid var(--border)}
+    .sectors-label{text-align:center;margin-bottom:40px}
+    .sectors-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:900px;margin:0 auto}
+    .sector-tag{background:var(--surface2);border:1px solid var(--border);padding:10px 20px;border-radius:4px;font-size:.85rem;font-weight:500;color:var(--dim);letter-spacing:.5px;transition:border-color .2s,color .2s}
+    .sector-tag:hover{border-color:var(--cyan);color:var(--text)}
+
+    .services{padding:100px 0}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px}
+    .service-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:32px;transition:border-color .3s,transform .2s}
+    .service-card:hover{border-color:rgba(0,245,255,.3);transform:translateY(-2px)}
+    .service-icon{font-size:1.8rem;margin-bottom:16px}
+    .service-card h3{font-size:1.1rem;margin-bottom:8px}
+    .service-card p{font-size:.9rem;color:var(--dim);line-height:1.7}
+    .service-tag{display:inline-block;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--cyan);background:rgba(0,245,255,.08);padding:3px 10px;border-radius:3px;letter-spacing:1px}
+
+    .products{padding:100px 0;border-top:1px solid var(--border)}
+    .product-hero{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:48px;margin-top:40px;display:flex;gap:48px;align-items:center}
+    .product-info{flex:1}.product-info h3{font-size:1.6rem;margin-bottom:12px}
+    .product-info p{color:var(--dim);margin-bottom:20px}
+    .product-features{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .product-features li{font-size:.85rem;color:var(--dim);padding-left:20px;position:relative}
+    .product-features li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+    .product-badge{background:var(--pink);color:#fff;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:3px;letter-spacing:1px;display:inline-block;margin-bottom:12px}
+    .product-link{display:inline-block;margin-top:24px;background:var(--cyan);color:var(--bg);padding:12px 28px;border-radius:4px;font-weight:700;font-size:.85rem;letter-spacing:1px}
+    .product-visual{width:280px;flex-shrink:0;background:var(--surface2);border:1px solid var(--border);border-radius:8px;height:240px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:3rem;color:rgba(0,245,255,.15)}
+
+    .expertise{padding:100px 0}
+    .expertise-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+    .expertise-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:24px 16px;text-align:center;transition:border-color .2s}
+    .expertise-item:hover{border-color:rgba(0,245,255,.3)}
+    .expertise-item .icon{font-size:1.5rem;margin-bottom:8px}
+    .expertise-item h4{font-size:.85rem;margin-bottom:4px}
+    .expertise-item p{font-size:.75rem;color:var(--dim)}
+
+    .about{padding:100px 0;border-top:1px solid var(--border)}
+    .about-content{display:flex;gap:64px;margin-top:40px}
+    .about-text{flex:1}.about-text p{color:var(--dim);margin-bottom:16px}
+    .about-values{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .value-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:20px}
+    .value-card h4{font-size:.85rem;color:var(--cyan);margin-bottom:6px;font-family:'JetBrains Mono',monospace}
+    .value-card p{font-size:.8rem;color:var(--dim)}
+
+    .contact{padding:100px 0;text-align:center;border-top:1px solid var(--border)}
+    .contact-grid{display:flex;justify-content:center;gap:48px;margin-top:40px}
+    .contact-item{text-align:center}
+    .contact-item .icon{font-size:1.5rem;margin-bottom:8px}
+    .contact-item h4{font-size:.9rem;margin-bottom:4px}
+    .contact-item p{font-size:.85rem;color:var(--dim)}
+
+    footer{padding:32px 0;border-top:1px solid var(--border);text-align:center}
+    footer p{font-size:.75rem;color:#303040}footer a{color:#404060}
+
+    @media(max-width:768px){
+      .hero h1{font-size:2.2rem}.hero-stats{flex-direction:column;gap:24px}
+      .product-hero{flex-direction:column}.product-visual{width:100%;height:160px}
+      .about-content{flex-direction:column;gap:32px}.expertise-grid{grid-template-columns:repeat(2,1fr)}
+      .product-features{grid-template-columns:1fr}nav ul{display:none}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>BEREN SOFTWARE</h1>
-    <p class="tagline">Productivity tools for locked-down environments</p>
-    <div class="divider"></div>
 
-    <div class="product">
-      <h2>VDI Agent <span class="badge">FLAGSHIP</span></h2>
-      <p>
-        AI assistant for Citrix, RDP, Azure Virtual Desktop, VMware Horizon and AWS WorkSpaces.
-        Runs on the host PC — captures the VDI screen, sends it to AI, types the response back.
-        Zero footprint on the remote. No admin rights required.
-      </p>
-      <p style="margin-top: 12px;">
-        <a href="https://vdiagent.ai">vdiagent.ai →</a>
-      </p>
+  <nav>
+    <div class="inner">
+      <div class="logo">BEREN<span>SOFTWARE</span></div>
+      <ul>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#prodotti">Prodotti</a></li>
+        <li><a href="#competenze">Competenze</a></li>
+        <li><a href="#chi-siamo">Chi siamo</a></li>
+        <li><a href="#contatti">Contatti</a></li>
+      </ul>
+      <a href="#contatti" class="cta-btn">CONTATTACI</a>
     </div>
+  </nav>
 
-    <p class="contact">
-      Beren Software · EU · <a href="mailto:info@vdiagent.ai">info@vdiagent.ai</a>
-    </p>
-  </div>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="section-label">IT Integration · Digital Solutions · AI</p>
+        <h1>Integriamo sistemi.<br><span class="accent">Acceleriamo il business.</span></h1>
+        <p>System integration, infrastrutture enterprise e soluzioni AI per organizzazioni che non possono permettersi downtime. Finance, difesa, pubblica amministrazione, assicurazioni.</p>
+        <a href="#contatti" class="product-link">PARLIAMO DEL TUO PROGETTO</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">15+</div><div class="label">Anni di esperienza</div></div>
+        <div class="hero-stat"><div class="num">50+</div><div class="label">Clienti enterprise</div></div>
+        <div class="hero-stat"><div class="num">99.9%</div><div class="label">Uptime garantito</div></div>
+        <div class="hero-stat"><div class="num">EU</div><div class="label">Data residency</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectors">
+    <div class="container">
+      <div class="sectors-label"><p class="section-label">Settori</p></div>
+      <div class="sectors-grid">
+        <div class="sector-tag">Banking & Finance</div>
+        <div class="sector-tag">Insurance</div>
+        <div class="sector-tag">Pubblica Amministrazione</div>
+        <div class="sector-tag">Defence & Aerospace</div>
+        <div class="sector-tag">Telecommunications</div>
+        <div class="sector-tag">Energy & Utilities</div>
+        <div class="sector-tag">Healthcare</div>
+        <div class="sector-tag">Manufacturing</div>
+        <div class="sector-tag">Legal & Compliance</div>
+        <div class="sector-tag">Retail & Logistics</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="servizi">
+    <div class="container">
+      <p class="section-label">Servizi</p>
+      <h2 class="section-title">Soluzioni end-to-end<br>per ambienti enterprise</h2>
+      <p class="section-desc">Progettiamo, implementiamo e gestiamo infrastrutture IT complesse dove affidabilità e sicurezza non sono opzionali.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🔗</div><h3>System Integration</h3>
+          <p>Integrazione di sistemi eterogenei — ERP, CRM, middleware, API gateway. Orchestrazione di flussi dati tra legacy e cloud-native.</p>
+          <span class="service-tag">ERP · CRM · MIDDLEWARE</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🖥️</div><h3>Virtual Desktop Infrastructure</h3>
+          <p>Progettazione e ottimizzazione di ambienti VDI — Citrix, VMware Horizon, Azure Virtual Desktop, AWS WorkSpaces. Migliaia di utenti, zero latenza.</p>
+          <span class="service-tag">CITRIX · VMWARE · AVD</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤖</div><h3>AI & Automazione</h3>
+          <p>Integrazione di modelli AI nei processi aziendali — document understanding, assistenti virtuali, analisi predittiva. LLM on-premise per dati sensibili.</p>
+          <span class="service-tag">LLM · COMPUTER VISION · RPA</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛡️</div><h3>Cybersecurity</h3>
+          <p>Hardening infrastrutturale, vulnerability assessment, SOC as a Service. Compliance GDPR, NIS2, DORA per il settore finanziario.</p>
+          <span class="service-tag">GDPR · NIS2 · DORA</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">☁️</div><h3>Cloud & Hybrid</h3>
+          <p>Migrazione e gestione multi-cloud — Azure, AWS, GCP. Architetture ibride con data residency EU e disaster recovery georidondato.</p>
+          <span class="service-tag">AZURE · AWS · GCP</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📊</div><h3>Managed Services</h3>
+          <p>Monitoraggio 24/7, incident management, capacity planning. SLA fino al 99.99% con penali contrattuali. Supporto L1-L3 in italiano.</p>
+          <span class="service-tag">24/7 · SLA 99.99%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products" id="prodotti">
+    <div class="container">
+      <p class="section-label">Prodotti</p>
+      <h2 class="section-title">Software proprietario</h2>
+      <p class="section-desc">Strumenti nati dalle esigenze reali dei nostri clienti enterprise.</p>
+      <div class="product-hero">
+        <div class="product-info">
+          <span class="product-badge">FLAGSHIP PRODUCT</span>
+          <h3>VDI Agent</h3>
+          <p>Assistente AI per ambienti VDI locked-down. Cattura lo schermo della sessione remota, invia la richiesta all'AI, digita la risposta direttamente nel desktop virtuale. Zero footprint sulla macchina remota.</p>
+          <ul class="product-features">
+            <li>8 piattaforme VDI supportate</li>
+            <li>11 modelli AI integrati</li>
+            <li>OCR avanzato con AI fusion</li>
+            <li>Zero installazione nel VDI</li>
+            <li>Crittografia at rest</li>
+            <li>Single-device enforcement</li>
+            <li>Registrazione schermo</li>
+            <li>Input vocale hands-free</li>
+          </ul>
+          <a href="https://vdiagent.ai" class="product-link" target="_blank">SCOPRI VDI AGENT →</a>
+        </div>
+        <div class="product-visual">⬡</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="expertise" id="competenze">
+    <div class="container">
+      <p class="section-label">Competenze</p>
+      <h2 class="section-title">Stack tecnologico</h2>
+      <p class="section-desc">Competenze verticali su tecnologie enterprise e cutting-edge.</p>
+      <div class="expertise-grid">
+        <div class="expertise-item"><div class="icon">🏗️</div><h4>Infrastruttura</h4><p>VMware · Hyper-V · Kubernetes · Terraform · Ansible</p></div>
+        <div class="expertise-item"><div class="icon">🔐</div><h4>Security</h4><p>SIEM · EDR · Firewall · WAF · Penetration Testing</p></div>
+        <div class="expertise-item"><div class="icon">💻</div><h4>Development</h4><p>.NET · TypeScript · React · Node.js · Python · C++</p></div>
+        <div class="expertise-item"><div class="icon">🗄️</div><h4>Data</h4><p>PostgreSQL · Oracle · SQL Server · Redis · Elasticsearch</p></div>
+        <div class="expertise-item"><div class="icon">☁️</div><h4>Cloud</h4><p>Azure · AWS · GCP · Hybrid · Multi-cloud</p></div>
+        <div class="expertise-item"><div class="icon">🖥️</div><h4>VDI</h4><p>Citrix · VMware Horizon · AVD · AWS WorkSpaces · RDP</p></div>
+        <div class="expertise-item"><div class="icon">🤖</div><h4>AI/ML</h4><p>LLM · Computer Vision · NLP · OCR · ONNX Runtime</p></div>
+        <div class="expertise-item"><div class="icon">📡</div><h4>Networking</h4><p>SD-WAN · MPLS · Zero Trust · VPN · Load Balancing</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="chi-siamo">
+    <div class="container">
+      <p class="section-label">Chi siamo</p>
+      <h2 class="section-title">Tecnologia al servizio<br>delle organizzazioni</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Beren Software nasce dall'esperienza sul campo in ambienti enterprise ad alta criticità. Conosciamo le sfide di chi opera con infrastrutture complesse, requisiti di compliance stringenti e zero tolerance per il downtime.</p>
+          <p>Non vendiamo tecnologia: risolviamo problemi. Ogni progetto parte dall'analisi dei processi reali, non da slide di marketing. Il nostro vantaggio competitivo è la profondità tecnica — sappiamo scrivere codice, configurare firewall, e parlare con il board nella stessa giornata.</p>
+          <p>Sede in Italia, operatività in tutta l'Unione Europea. Data residency EU garantita su ogni progetto.</p>
+        </div>
+        <div class="about-values">
+          <div class="value-card"><h4>// RELIABILITY</h4><p>SLA con penali. Monitoring 24/7. Disaster recovery testato, non teorico.</p></div>
+          <div class="value-card"><h4>// SECURITY</h4><p>Security by design. Compliance GDPR, NIS2, DORA. Penetration test periodici.</p></div>
+          <div class="value-card"><h4>// TRANSPARENCY</h4><p>Preventivi chiari. Nessun vendor lock-in. Documentazione completa.</p></div>
+          <div class="value-card"><h4>// PRAGMATISM</h4><p>Soluzioni che funzionano oggi, non POC che restano in staging per sempre.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contatti">
+    <div class="container">
+      <p class="section-label">Contatti</p>
+      <h2 class="section-title">Parliamo del tuo progetto</h2>
+      <p class="section-desc" style="margin:0 auto">Descrivi la tua sfida — rispondiamo entro 24 ore con una proposta concreta.</p>
+      <div class="contact-grid">
+        <div class="contact-item"><div class="icon">✉️</div><h4>Email</h4><p><a href="mailto:info@berensoftware.com">info@berensoftware.com</a></p></div>
+        <div class="contact-item"><div class="icon">🌐</div><h4>Prodotto</h4><p><a href="https://vdiagent.ai" target="_blank">vdiagent.ai</a></p></div>
+        <div class="contact-item"><div class="icon">📍</div><h4>Sede</h4><p>Italia · Unione Europea</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Beren Software · <a href="mailto:info@berensoftware.com">info@berensoftware.com</a></p>
+    </div>
+  </footer>
+
 </body>
 </html>
