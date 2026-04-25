@@ -410,6 +410,106 @@
     .skip-link:focus{top:8px;color:#fff;outline:2px solid var(--text);outline-offset:2px}
     *:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
 
+    /* === CURSOR FOLLOWER === */
+    .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:200;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),background .2s ease,opacity .2s ease;mix-blend-mode:difference;opacity:0}
+    .cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--accent);pointer-events:none;z-index:199;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),border-color .2s ease,opacity .25s ease;opacity:0}
+    body.cursor-active .cursor-dot,body.cursor-active .cursor-ring{opacity:.85}
+    body.cursor-hover .cursor-dot{width:14px;height:14px;background:#fff}
+    body.cursor-hover .cursor-ring{width:56px;height:56px;border-color:#9d6bff}
+    @media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
+
+    /* === BENTO === */
+    .bento{padding:96px 0;background:linear-gradient(180deg,var(--bg-soft),#fff)}
+    .bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(180px,auto);gap:18px;margin-top:48px}
+    .bento-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--radius-xl);padding:28px;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s ease,border-color .25s ease}
+    .bento-card:hover{border-color:var(--border-strong);box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+    .bento-card.span-2{grid-column:span 2}
+    .bento-card.span-2-row{grid-row:span 2}
+    .bento-card h3{font-size:1.05rem;font-weight:700;color:var(--text);letter-spacing:-.005em;margin-bottom:10px}
+    .bento-card p{font-size:.92rem;color:var(--text-soft);line-height:1.6}
+    .bento-card .b-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;font-weight:600}
+    /* Bento stat card */
+    .bento-stat .big{font-size:clamp(2.4rem,4vw,3.6rem);font-weight:800;letter-spacing:-.025em;color:var(--text);line-height:1;background:linear-gradient(135deg,var(--accent),#9d6bff,#00d4c1);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px;animation:gradientShift 11s linear infinite}
+    /* Bento dark accent */
+    .bento-dark{background:linear-gradient(135deg,#0a2540,#162a52);color:#fff;border-color:transparent}
+    .bento-dark::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(99,91,255,.3),transparent 70%);bottom:-100px;right:-100px;pointer-events:none;filter:blur(40px)}
+    .bento-dark h3{color:#fff}
+    .bento-dark p{color:rgba(255,255,255,.72)}
+    .bento-dark .b-eyebrow{color:#9d8fff}
+    /* Pulse status */
+    .bento-pulse{position:relative}
+    .pulse-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-top:18px}
+    .pulse-cell{aspect-ratio:1;background:var(--accent-soft);border-radius:2px;animation:pulse-cell 3s ease-in-out infinite}
+    .pulse-cell.up{background:var(--accent)}
+    .pulse-cell.warn{background:var(--amber)}
+    @keyframes pulse-cell{0%,100%{opacity:.6}50%{opacity:1}}
+    .pulse-cell:nth-child(3n){animation-delay:.4s}
+    .pulse-cell:nth-child(5n){animation-delay:.8s}
+    .pulse-cell:nth-child(7n){animation-delay:1.2s}
+    /* Cert chips */
+    .bento-certs{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .bento-certs .chip{padding:6px 12px;background:var(--accent-soft);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.74rem;font-weight:700;border-radius:4px;letter-spacing:.04em}
+    /* Quote bento */
+    .bento-quote .qmark{font-family:Georgia,serif;font-size:3.4rem;line-height:.5;color:var(--accent);margin-bottom:8px;opacity:.4}
+    .bento-quote blockquote{font-size:1.15rem;color:var(--text);line-height:1.5;font-weight:500;margin-bottom:18px;letter-spacing:-.01em}
+    .bento-quote .qmeta{display:flex;align-items:center;gap:10px;font-size:.84rem;color:var(--text-dim)}
+    .bento-quote .qavatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#9d6bff);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.74rem}
+
+    /* === EU MAP === */
+    .eu-map{padding:96px 0;background:linear-gradient(180deg,#fff,var(--bg-soft));position:relative;overflow:hidden}
+    .eu-map-wrap{position:relative;display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:center;margin-top:36px}
+    .eu-map-text h2{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:800;letter-spacing:-.02em;color:var(--text);margin-bottom:16px;line-height:1.15}
+    .eu-map-text p{font-size:1.02rem;color:var(--text-soft);line-height:1.65;margin-bottom:14px}
+    .eu-map-stats{display:flex;gap:32px;margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}
+    .eu-map-stat .n{font-size:1.6rem;font-weight:800;color:var(--text);line-height:1;letter-spacing:-.02em}
+    .eu-map-stat .l{font-size:.8rem;color:var(--text-dim);margin-top:4px}
+    .eu-svg-wrap{position:relative;aspect-ratio:1.2/1;width:100%;max-width:560px;margin:0 auto}
+    .eu-svg{width:100%;height:100%;overflow:visible}
+    .eu-country{fill:#fff;stroke:var(--border);stroke-width:.5;transition:fill .3s ease,stroke .3s ease}
+    .eu-svg:hover .eu-country{fill:#fafbff}
+    .eu-country.active{fill:var(--accent-soft);stroke:var(--accent)}
+    .eu-dot{fill:var(--accent);transform-origin:center;animation:eu-pulse 2.4s ease-in-out infinite}
+    .eu-dot::after{content:''}
+    .eu-pulse-ring{fill:none;stroke:var(--accent);stroke-width:1.5;opacity:0;animation:eu-ring 2.4s ease-out infinite}
+    @keyframes eu-pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    @keyframes eu-ring{0%{r:4;opacity:.5}100%{r:18;opacity:0}}
+    .eu-arc{fill:none;stroke:url(#arcGradient);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:300;stroke-dashoffset:300;animation:arc-draw 4s ease-in-out infinite}
+    @keyframes arc-draw{0%{stroke-dashoffset:300;opacity:0}30%{opacity:1}70%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:-300;opacity:0}}
+    .eu-arc:nth-child(2){animation-delay:1s}
+    .eu-arc:nth-child(3){animation-delay:2s}
+    .eu-arc:nth-child(4){animation-delay:3s}
+
+    /* === STICKY PROCESS === */
+    .process-sticky{position:relative;padding:0;background:var(--bg-soft)}
+    .process-sticky-inner{position:relative;height:300vh}
+    .process-sticky-stage{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));display:flex;align-items:center;overflow:hidden}
+    .process-sticky-content{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+    .process-sticky-content .eyebrow,.process-sticky-content .title,.process-sticky-content .subtitle{margin-bottom:14px}
+    .process-sticky-content .subtitle{margin-bottom:48px}
+    .ps-track{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+    .ps-track::before{content:'';position:absolute;top:28px;left:8%;right:8%;height:2px;background:var(--border);z-index:0}
+    .ps-progress{position:absolute;top:28px;left:8%;height:2px;background:linear-gradient(90deg,var(--accent),#9d6bff,#00d4c1);z-index:1;width:0;transition:width .3s var(--ease);border-radius:2px;box-shadow:0 0 8px rgba(99,91,255,.4)}
+    .ps-step{text-align:center;position:relative;z-index:2;opacity:.35;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+    .ps-step.active{opacity:1;transform:none}
+    .ps-num{width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid var(--border);color:var(--text-dim);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1rem;transition:all .4s var(--ease);box-shadow:var(--shadow-sm)}
+    .ps-step.active .ps-num{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(99,91,255,.3),0 0 0 8px rgba(99,91,255,.10)}
+    .ps-step h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px}
+    .ps-step p{font-size:.88rem;color:var(--text-soft);line-height:1.55;margin-bottom:8px}
+    .ps-step .step-time{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--text-muted);text-transform:uppercase;font-weight:600}
+    @media(max-width:980px){
+      .process-sticky-inner{height:auto}
+      .process-sticky-stage{position:static;height:auto;padding:72px 0}
+      .ps-track{grid-template-columns:1fr 1fr;gap:32px}
+      .ps-track::before,.ps-progress{display:none}
+      .ps-step{opacity:1;transform:none}
+      .ps-step .ps-num{background:var(--accent);border-color:var(--accent);color:#fff}
+    }
+    .legacy-process{display:none}
+
+    /* === WORD REVEAL === */
+    .word-reveal .word{display:inline-block;opacity:0;transform:translateY(20px) rotate(2deg);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+    .word-reveal.visible .word{opacity:1;transform:none}
+
     /* === REVEAL === */
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
     .reveal.visible{opacity:1;transform:none}
@@ -486,6 +586,10 @@
 
 <!-- Scroll progress -->
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- Cursor follower -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
 <!-- ============= NAV ============= -->
 <nav class="site-nav" aria-label="Primary">
@@ -681,6 +785,72 @@
   </div>
 </section>
 
+<!-- ============= BENTO ============= -->
+<section class="bento reveal">
+  <div class="container">
+    <p class="eyebrow">Why teams choose us</p>
+    <h2 class="title word-reveal">A technology partner, not a vendor.</h2>
+    <p class="subtitle">The reasons our clients keep coming back, project after project.</p>
+    <div class="bento-grid">
+      <!-- Big stat card -->
+      <div class="bento-card bento-stat span-2">
+        <p class="b-eyebrow">// Service level</p>
+        <div class="big">99.99%</div>
+        <h3>Contractual SLA, with penalties</h3>
+        <p>We back our infrastructure with measurable commitments. Penalties on missed targets, monthly reporting, no fine print.</p>
+      </div>
+      <!-- Pulse status -->
+      <div class="bento-card bento-pulse">
+        <p class="b-eyebrow">// Live ops</p>
+        <h3>24/7 monitoring</h3>
+        <p>L1-L3 coverage with predictable response times.</p>
+        <div class="pulse-grid" aria-hidden="true">
+          <span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell up"></span>
+          <span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell warn"></span>
+          <span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell up"></span>
+          <span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell warn"></span><span class="pulse-cell up"></span>
+          <span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell up"></span>
+          <span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell up"></span><span class="pulse-cell up"></span>
+        </div>
+      </div>
+      <!-- EU only -->
+      <div class="bento-card">
+        <p class="b-eyebrow">// Data residency</p>
+        <h3>EU only, by default</h3>
+        <p>No client data leaves the European Union without explicit written request. Contractual guarantee.</p>
+      </div>
+      <!-- Cert chips -->
+      <div class="bento-card">
+        <p class="b-eyebrow">// Compliance</p>
+        <h3>Audit-ready</h3>
+        <p>We hand over evidence packages, not slide decks.</p>
+        <div class="bento-certs">
+          <span class="chip">ISO 27001</span>
+          <span class="chip">GDPR</span>
+          <span class="chip">NIS2</span>
+          <span class="chip">DORA</span>
+          <span class="chip">SOC 2</span>
+        </div>
+      </div>
+      <!-- Quote -->
+      <div class="bento-card bento-quote span-2">
+        <div class="qmark" aria-hidden="true">"</div>
+        <blockquote>The team migrated 4,000 desktops to AVD in 6 months without a single production incident. They really understand regulated environments.</blockquote>
+        <div class="qmeta">
+          <div class="qavatar">CT</div>
+          <div><strong style="color:var(--text)">CTO</strong> · Top-5 Italian bank</div>
+        </div>
+      </div>
+      <!-- Dark accent: handover -->
+      <div class="bento-card bento-dark span-2">
+        <p class="b-eyebrow">// Handover guarantee</p>
+        <h3>No vendor lock-in. Ever.</h3>
+        <p>Docs, code and configs ship into your repos, not ours. If you change partner, we deliver a complete handover in 2-4 weeks: runbooks, ADRs, access transitions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============= COMPLIANCE ============= -->
 <section class="alt reveal" id="compliance">
   <div class="container">
@@ -758,36 +928,41 @@
   </div>
 </section>
 
-<!-- ============= PROCESS ============= -->
-<section class="alt reveal" id="process">
-  <div class="container">
-    <p class="eyebrow">How we work</p>
-    <h2 class="title">From first contact to go-live</h2>
-    <p class="subtitle">A structured four-phase path. Each step has concrete deliverables, no endless discovery without output.</p>
-    <div class="process-track">
-      <div class="process-step">
-        <div class="step-num">01</div>
-        <h3>Discovery</h3>
-        <p>Technical analysis, regulatory constraints, stakeholder mapping. Output: gap assessment + scoping proposal.</p>
-        <span class="step-time">2-4 weeks</span>
-      </div>
-      <div class="process-step">
-        <div class="step-num">02</div>
-        <h3>Design</h3>
-        <p>Target architecture, cost model, identified risks. Output: HLD/LLD signed off by the client.</p>
-        <span class="step-time">3-6 weeks</span>
-      </div>
-      <div class="process-step">
-        <div class="step-num">03</div>
-        <h3>Implementation</h3>
-        <p>Sprint-based build, code in client repos, continuous security testing. Output: production environment.</p>
-        <span class="step-time">3-12 months</span>
-      </div>
-      <div class="process-step">
-        <div class="step-num">04</div>
-        <h3>Operate</h3>
-        <p>Run 24/7 with contractual SLAs, or full handover to your internal team with runbooks.</p>
-        <span class="step-time">your choice</span>
+<!-- ============= STICKY PROCESS ============= -->
+<section class="process-sticky" id="process">
+  <div class="process-sticky-inner" id="psInner">
+    <div class="process-sticky-stage">
+      <div class="process-sticky-content">
+        <p class="eyebrow">How we work</p>
+        <h2 class="title word-reveal">From first contact to go-live.</h2>
+        <p class="subtitle">A structured four-phase path. Each step has concrete deliverables, no endless discovery without output.</p>
+        <div class="ps-track">
+          <div class="ps-progress" id="psProgress"></div>
+          <div class="ps-step active" data-step="0">
+            <div class="ps-num">01</div>
+            <h3>Discovery</h3>
+            <p>Technical analysis, regulatory constraints, stakeholder mapping. Output: gap assessment + scoping proposal.</p>
+            <span class="step-time">2-4 weeks</span>
+          </div>
+          <div class="ps-step" data-step="1">
+            <div class="ps-num">02</div>
+            <h3>Design</h3>
+            <p>Target architecture, cost model, identified risks. Output: HLD/LLD signed off by the client.</p>
+            <span class="step-time">3-6 weeks</span>
+          </div>
+          <div class="ps-step" data-step="2">
+            <div class="ps-num">03</div>
+            <h3>Implementation</h3>
+            <p>Sprint-based build, code in client repos, continuous security testing. Output: production environment.</p>
+            <span class="step-time">3-12 months</span>
+          </div>
+          <div class="ps-step" data-step="3">
+            <div class="ps-num">04</div>
+            <h3>Operate</h3>
+            <p>Run 24/7 with contractual SLAs, or full handover to your internal team with runbooks.</p>
+            <span class="step-time">your choice</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -839,6 +1014,108 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M8.5 16.43a6 6 0 0 1 7 0"/><line x1="12" y1="20" x2="12" y2="20.01"/></svg></div>
         <h4>Networking</h4>
         <p>SD-WAN · MPLS · Zero Trust · VPN · F5</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= EU MAP ============= -->
+<section class="eu-map reveal">
+  <div class="container">
+    <p class="eyebrow">Where we operate</p>
+    <h2 class="title word-reveal">European by design.</h2>
+    <div class="eu-map-wrap">
+      <div class="eu-map-text">
+        <h2>Italy headquarters, EU operations.</h2>
+        <p>We deploy and run infrastructure across the European Union, with personnel that speaks your regulator's language and works inside your timezone.</p>
+        <p>Every project: EU data residency, EU billing, EU support. No surprises in the contract, no exceptions in the SLAs.</p>
+        <div class="eu-map-stats">
+          <div class="eu-map-stat"><div class="n">8</div><div class="l">EU countries served</div></div>
+          <div class="eu-map-stat"><div class="n">3</div><div class="l">Working languages</div></div>
+          <div class="eu-map-stat"><div class="n">100%</div><div class="l">Data residency EU</div></div>
+        </div>
+      </div>
+      <div class="eu-svg-wrap" aria-hidden="true">
+        <svg class="eu-svg" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="arcGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#635bff"/>
+              <stop offset="50%" stop-color="#9d6bff"/>
+              <stop offset="100%" stop-color="#00d4c1"/>
+            </linearGradient>
+            <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#635bff" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#635bff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Stylized Europe outline (simplified country shapes) -->
+          <g>
+            <!-- UK -->
+            <path class="eu-country" d="M180 130 Q 175 110 185 100 L 200 95 L 215 105 L 220 125 L 215 145 L 200 155 L 188 150 Z"/>
+            <!-- France -->
+            <path class="eu-country active" d="M210 200 L 240 195 L 265 215 L 270 250 L 250 275 L 220 280 L 200 265 L 195 230 Z"/>
+            <!-- Spain -->
+            <path class="eu-country" d="M155 270 L 195 270 L 215 285 L 215 320 L 195 335 L 165 335 L 145 320 L 140 295 Z"/>
+            <!-- Germany -->
+            <path class="eu-country active" d="M270 175 L 300 175 L 315 195 L 320 220 L 305 245 L 280 245 L 270 225 L 265 200 Z"/>
+            <!-- Italy -->
+            <path class="eu-country active" d="M295 250 L 320 250 L 335 280 L 350 320 L 345 350 L 360 365 L 355 380 L 340 380 L 325 360 L 305 325 L 295 290 Z"/>
+            <!-- Poland -->
+            <path class="eu-country" d="M325 175 L 365 175 L 385 195 L 380 220 L 360 235 L 335 230 L 320 215 Z"/>
+            <!-- Netherlands -->
+            <path class="eu-country active" d="M255 165 L 275 160 L 285 175 L 280 188 L 265 190 L 252 180 Z"/>
+            <!-- Belgium -->
+            <path class="eu-country" d="M240 188 L 258 185 L 265 198 L 258 210 L 245 210 L 235 200 Z"/>
+            <!-- Switzerland -->
+            <path class="eu-country" d="M265 230 L 285 228 L 295 240 L 290 252 L 275 255 L 262 245 Z"/>
+            <!-- Austria -->
+            <path class="eu-country" d="M295 235 L 325 232 L 340 245 L 335 258 L 310 262 L 295 252 Z"/>
+            <!-- Czech Rep -->
+            <path class="eu-country" d="M305 200 L 330 198 L 340 215 L 333 228 L 315 230 L 302 220 Z"/>
+            <!-- Greece -->
+            <path class="eu-country" d="M380 340 L 410 335 L 425 355 L 415 375 L 395 380 L 380 365 Z"/>
+            <!-- Romania -->
+            <path class="eu-country" d="M385 230 L 425 225 L 445 245 L 440 270 L 415 280 L 390 270 L 378 250 Z"/>
+            <!-- Sweden -->
+            <path class="eu-country" d="M310 65 L 340 60 L 355 90 L 350 130 L 335 155 L 320 145 L 312 110 Z"/>
+            <!-- Norway -->
+            <path class="eu-country" d="M280 50 L 310 48 L 318 80 L 310 130 L 290 145 L 275 125 L 270 85 Z"/>
+            <!-- Denmark -->
+            <path class="eu-country" d="M285 152 L 305 150 L 312 165 L 305 178 L 290 178 L 282 165 Z"/>
+            <!-- Portugal -->
+            <path class="eu-country" d="M138 285 L 152 282 L 158 305 L 155 325 L 145 330 L 138 320 Z"/>
+            <!-- Ireland -->
+            <path class="eu-country" d="M155 130 L 175 128 L 180 145 L 175 160 L 160 162 L 150 150 Z"/>
+          </g>
+
+          <!-- Connection arcs from Rome (italy hub) to other capitals -->
+          <path class="eu-arc" d="M 322 305 Q 280 220 240 220" />
+          <path class="eu-arc" d="M 322 305 Q 305 250 290 195" />
+          <path class="eu-arc" d="M 322 305 Q 360 260 410 245" />
+          <path class="eu-arc" d="M 322 305 Q 280 300 195 300" />
+
+          <!-- Pulse rings around hubs -->
+          <circle class="eu-pulse-ring" cx="322" cy="305" r="4"/>
+          <circle class="eu-pulse-ring" cx="240" cy="220" r="4" style="animation-delay:.6s"/>
+          <circle class="eu-pulse-ring" cx="290" cy="195" r="4" style="animation-delay:1.2s"/>
+          <circle class="eu-pulse-ring" cx="410" cy="245" r="4" style="animation-delay:1.8s"/>
+
+          <!-- Hub dots -->
+          <circle cx="322" cy="305" r="40" fill="url(#hubGlow)"/>
+          <circle class="eu-dot" cx="322" cy="305" r="5" />
+          <circle class="eu-dot" cx="240" cy="220" r="3.5" style="animation-delay:.3s"/>
+          <circle class="eu-dot" cx="290" cy="195" r="3.5" style="animation-delay:.6s"/>
+          <circle class="eu-dot" cx="410" cy="245" r="3.5" style="animation-delay:.9s"/>
+          <circle class="eu-dot" cx="195" cy="300" r="3" style="animation-delay:1.2s"/>
+          <circle class="eu-dot" cx="265" cy="175" r="3" style="animation-delay:1.5s"/>
+
+          <!-- City labels -->
+          <text x="332" y="302" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#0a2540">Rome</text>
+          <text x="248" y="217" font-family="'JetBrains Mono', monospace" font-size="10" fill="#697386">Paris</text>
+          <text x="297" y="192" font-family="'JetBrains Mono', monospace" font-size="10" fill="#697386">Berlin</text>
+          <text x="416" y="242" font-family="'JetBrains Mono', monospace" font-size="10" fill="#697386">Bucharest</text>
+        </svg>
       </div>
     </div>
   </div>
@@ -1131,6 +1408,86 @@
 </div>
 
 <script>
+  // === CURSOR FOLLOWER ===
+  if(!window.matchMedia('(hover:none)').matches && !('ontouchstart' in window) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, dx = 0, dy = 0, rx = 0, ry = 0;
+    let active = false;
+    document.addEventListener('mousemove', (e)=>{
+      mx = e.clientX; my = e.clientY;
+      if(!active){ document.body.classList.add('cursor-active'); active = true; }
+    }, {passive:true});
+    document.addEventListener('mouseleave', ()=>{
+      document.body.classList.remove('cursor-active'); active = false;
+    });
+    // Hover state on interactive elements
+    document.querySelectorAll('a, button, [role="button"], input, textarea, select, summary, .service-card, .bento-card, .testimonial, .sector-card, .cert, .expertise-item, .logo-tag').forEach(el=>{
+      el.addEventListener('mouseenter', ()=>document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', ()=>document.body.classList.remove('cursor-hover'));
+    });
+    function tickCursor(){
+      // Dot: follows tightly
+      dx += (mx - dx) * .35;
+      dy += (my - dy) * .35;
+      dot.style.transform = `translate(${dx}px, ${dy}px) translate(-50%, -50%)`;
+      // Ring: lags
+      rx += (mx - rx) * .12;
+      ry += (my - ry) * .12;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+  }
+
+  // === STICKY PROCESS SCROLL ===
+  const psInner = document.getElementById('psInner');
+  const psSteps = document.querySelectorAll('.ps-step');
+  const psProgress = document.getElementById('psProgress');
+  if(psInner && psSteps.length && window.matchMedia('(min-width: 981px)').matches){
+    let psTicking = false;
+    function updatePs(){
+      const rect = psInner.getBoundingClientRect();
+      const total = psInner.offsetHeight - window.innerHeight;
+      // 0..1 progress through the sticky section
+      let p = -rect.top / total;
+      p = Math.max(0, Math.min(1, p));
+      // Map to step index (0..3)
+      const stepCount = psSteps.length;
+      const idx = Math.min(stepCount-1, Math.floor(p * stepCount));
+      psSteps.forEach((s,i)=>s.classList.toggle('active', i <= idx));
+      // Progress bar from first step center to last step center
+      const stepWidthPct = 100 / stepCount;
+      const halfStepPct = stepWidthPct / 2;
+      const widthPct = halfStepPct + (idx / (stepCount-1)) * (100 - stepWidthPct);
+      psProgress.style.width = `calc((100% - 16%) * ${idx / (stepCount-1)})`;
+    }
+    window.addEventListener('scroll', ()=>{
+      if(!psTicking){
+        requestAnimationFrame(()=>{ updatePs(); psTicking = false; });
+        psTicking = true;
+      }
+    }, {passive:true});
+    updatePs();
+  }
+
+  // === WORD REVEAL ===
+  document.querySelectorAll('.word-reveal').forEach(el=>{
+    const text = el.textContent;
+    el.innerHTML = '';
+    text.split(/(\s+)/).forEach((chunk, i)=>{
+      if(chunk.trim() === ''){
+        el.appendChild(document.createTextNode(chunk));
+        return;
+      }
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = chunk;
+      span.style.transitionDelay = (i * 0.04) + 's';
+      el.appendChild(span);
+    });
+  });
+
   // === SCROLL PROGRESS BAR ===
   const sp = document.getElementById('scrollProgress');
   let spTicking = false;
@@ -1269,14 +1626,30 @@
     dr.classList.remove('open'); hb.setAttribute('aria-expanded','false'); document.body.style.overflow='';
   }));
 
-  // === REVEAL ===
+  // === REVEAL (incl. word-reveal triggered by parent reveal or self) ===
   if('IntersectionObserver' in window){
     const io = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }});
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          // Also trigger any word-reveal children
+          e.target.querySelectorAll('.word-reveal').forEach(w=>w.classList.add('visible'));
+          io.unobserve(e.target);
+        }
+      });
     },{threshold:.08});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    // Word-reveal not inside reveal sections (process-sticky has its own)
+    document.querySelectorAll('.word-reveal').forEach(el=>{
+      if(!el.closest('.reveal')){
+        const wio = new IntersectionObserver(entries=>{
+          entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); wio.unobserve(e.target); }});
+        },{threshold:.3});
+        wio.observe(el);
+      }
+    });
   } else {
-    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+    document.querySelectorAll('.reveal,.word-reveal').forEach(el=>el.classList.add('visible'));
   }
 
   // === BACK TO TOP ===
