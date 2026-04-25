@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://berensoftware.com/sitemap.xml
