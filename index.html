@@ -93,7 +93,7 @@
       --ease:cubic-bezier(.2,.8,.2,1);
     }
     *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
     body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-feature-settings:"ss01","cv11"}
     img,svg{display:block;max-width:100%}
     a{color:var(--cyan);text-decoration:none;transition:opacity .2s var(--ease),color .2s var(--ease)}
@@ -357,6 +357,19 @@
     *:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:2px}
     button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:3px}
 
+    /* === PROCESS === */
+    .process{padding:100px 0;border-top:1px solid var(--border);background:linear-gradient(180deg,var(--bg),rgba(0,245,255,.02))}
+    .process-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:48px;position:relative}
+    .process-track::before{content:'';position:absolute;top:32px;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.4}
+    .process-step{position:relative;text-align:center;padding:0 14px}
+    .step-num{width:64px;height:64px;border-radius:50%;background:var(--surface);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.1rem;color:var(--cyan);position:relative;z-index:1;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+    .process-step:hover .step-num{transform:scale(1.06);box-shadow:0 0 30px rgba(0,245,255,.25)}
+    .step-num::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--border);opacity:0;transition:opacity .25s}
+    .process-step:hover .step-num::before{opacity:1}
+    .process-step h3{font-size:.95rem;margin-bottom:8px;font-weight:700;color:var(--text);letter-spacing:.3px}
+    .process-step p{font-size:.84rem;color:var(--text-soft);line-height:1.6}
+    .process-step .step-time{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:1.5px;color:var(--cyan);text-transform:uppercase;margin-top:8px;display:inline-block}
+
     /* === FAQ === */
     .faq{padding:100px 0;border-top:1px solid var(--border)}
     .faq-list{max-width:780px;margin:44px auto 0}
@@ -365,6 +378,8 @@
     .faq-item[open]{border-color:var(--border-strong);background:linear-gradient(180deg,rgba(0,245,255,.02),var(--surface))}
     .faq-q{padding:18px 22px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:.96rem;font-weight:600;color:var(--text);transition:color .2s}
     .faq-q::-webkit-details-marker{display:none}
+    .faq-q::marker{content:''}
+    .faq-q::-moz-details-marker{display:none}
     .faq-q::after{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.4rem;color:var(--cyan);transition:transform .25s var(--ease);font-weight:300;flex-shrink:0}
     .faq-item[open] .faq-q::after{transform:rotate(45deg)}
     .faq-q:hover{color:var(--cyan)}
@@ -380,6 +395,8 @@
       .contact-grid{grid-template-columns:1fr;gap:32px}
       .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
       .expertise-grid{grid-template-columns:repeat(3,1fr)}
+      .process-track{grid-template-columns:1fr 1fr;gap:32px 0}
+      .process-track::before{display:none}
     }
     @media(max-width:768px){
       .nav-links,.nav-actions .lang-switch,.nav-actions .nav-cta{display:none}
@@ -394,6 +411,8 @@
       .expertise-grid{grid-template-columns:1fr 1fr}
       .compliance-grid{grid-template-columns:1fr 1fr}
       .cookie-banner{left:12px;right:12px;bottom:12px;padding:14px}
+      .process-track{grid-template-columns:1fr;gap:24px}
+      body.cookie-shown .back-to-top{bottom:170px}
     }
     @media (prefers-reduced-motion:reduce){
       *{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -416,7 +435,7 @@
     <ul class="nav-links">
       <li><a href="#servizi" data-i18n="nav.services">Servizi</a></li>
       <li><a href="#prodotti" data-i18n="nav.products">Prodotti</a></li>
-      <li><a href="#competenze" data-i18n="nav.expertise">Competenze</a></li>
+      <li><a href="#processo" data-i18n="nav.process">Processo</a></li>
       <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
       <li><a href="#chi-siamo" data-i18n="nav.about">Chi siamo</a></li>
       <li><a href="#contatti" data-i18n="nav.contact">Contatti</a></li>
@@ -439,6 +458,7 @@
   <ul>
     <li><a href="#servizi" data-i18n="nav.services">Servizi</a></li>
     <li><a href="#prodotti" data-i18n="nav.products">Prodotti</a></li>
+    <li><a href="#processo" data-i18n="nav.process">Processo</a></li>
     <li><a href="#competenze" data-i18n="nav.expertise">Competenze</a></li>
     <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
     <li><a href="#chi-siamo" data-i18n="nav.about">Chi siamo</a></li>
@@ -751,6 +771,41 @@
   </div>
 </section>
 
+<!-- ===== PROCESS ===== -->
+<section class="process reveal" id="processo">
+  <div class="container">
+    <p class="section-label" data-i18n="proc.label">Come lavoriamo</p>
+    <h2 class="section-title" data-i18n="proc.title">Dal primo contatto al go-live</h2>
+    <p class="section-desc" data-i18n="proc.desc">Un percorso strutturato in quattro fasi. Ogni passaggio ha deliverable concreti — niente fasi infinite di "discovery" senza output.</p>
+    <div class="process-track">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3 data-i18n="proc.s1.t">Discovery</h3>
+        <p data-i18n="proc.s1.d">Analisi tecnica dei sistemi, vincoli regolatori, stakeholder. Output: gap assessment + proposta scoping.</p>
+        <span class="step-time">2-4 SETTIMANE</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3 data-i18n="proc.s2.t">Design</h3>
+        <p data-i18n="proc.s2.d">Architettura target, modello di costo, rischi identificati. Output: HLD/LLD firmato dal cliente.</p>
+        <span class="step-time">3-6 SETTIMANE</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3 data-i18n="proc.s3.t">Implementazione</h3>
+        <p data-i18n="proc.s3.d">Build a sprint, codice e config nel repo del cliente, security testing continuo. Output: ambiente in produzione.</p>
+        <span class="step-time">3-12 MESI</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3 data-i18n="proc.s4.t">Operate</h3>
+        <p data-i18n="proc.s4.d">Run 24/7 con SLA contrattuali, oppure handover completo al team interno con runbook.</p>
+        <span class="step-time">A SCELTA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FAQ ===== -->
 <section class="faq reveal" id="faq">
   <div class="container">
@@ -1000,8 +1055,8 @@
   // ====== I18N ======
   const I18N = {
     it: {
-      "a11y.skip":"SALTA AL CONTENUTO",
-      "nav.services":"Servizi","nav.products":"Prodotti","nav.expertise":"Competenze","nav.faq":"FAQ","nav.about":"Chi siamo","nav.contact":"Contatti","nav.cta":"CONTATTACI",
+      "a11y.skip":"SALTA AL CONTENUTO","a11y.top":"Torna in alto",
+      "nav.services":"Servizi","nav.products":"Prodotti","nav.process":"Processo","nav.expertise":"Competenze","nav.faq":"FAQ","nav.about":"Chi siamo","nav.contact":"Contatti","nav.cta":"CONTATTACI",
       "hero.badge":"SYSTEM ONLINE · ITALIA · UE",
       "hero.title":"Integriamo sistemi.",
       "hero.title2":"Acceleriamo il business.",
@@ -1034,6 +1089,11 @@
       "tst.n2":"Head of Cyber","tst.r2":"Gruppo assicurativo nazionale",
       "tst.q3":"Per noi VDI Agent è un game-changer. Permette ai consulenti di usare l'AI dentro l'ambiente VDI compliant senza compromettere il perimetro di sicurezza.",
       "tst.n3":"Direttore IT","tst.r3":"Difesa & Aerospace",
+      "proc.label":"Come lavoriamo","proc.title":"Dal primo contatto al go-live","proc.desc":"Un percorso strutturato in quattro fasi. Ogni passaggio ha deliverable concreti — niente fasi infinite di \"discovery\" senza output.",
+      "proc.s1.t":"Discovery","proc.s1.d":"Analisi tecnica dei sistemi, vincoli regolatori, stakeholder. Output: gap assessment + proposta scoping.",
+      "proc.s2.t":"Design","proc.s2.d":"Architettura target, modello di costo, rischi identificati. Output: HLD/LLD firmato dal cliente.",
+      "proc.s3.t":"Implementazione","proc.s3.d":"Build a sprint, codice e config nel repo del cliente, security testing continuo. Output: ambiente in produzione.",
+      "proc.s4.t":"Operate","proc.s4.d":"Run 24/7 con SLA contrattuali, oppure handover completo al team interno con runbook.",
       "faq.label":"Domande frequenti","faq.title":"Quello che ci chiedono prima di firmare","faq.desc":"Risposte concrete alle obiezioni più comuni dai team IT enterprise.",
       "faq.q1":"Come gestite la riservatezza in ambienti regolamentati?",
       "faq.a1":"Tutti i progetti partono con un NDA. Per finance, defence e PA usiamo personale verificato (NOS dove richiesto), workstation dedicate, network segregation, e log audit. Possiamo lavorare on-premise o in ambienti tenant-isolated del cliente — niente dati sensibili escono dal perimetro autorizzato.",
@@ -1068,8 +1128,8 @@
       "cookie.accept":"HO CAPITO"
     },
     en: {
-      "a11y.skip":"SKIP TO CONTENT",
-      "nav.services":"Services","nav.products":"Products","nav.expertise":"Expertise","nav.faq":"FAQ","nav.about":"About","nav.contact":"Contact","nav.cta":"CONTACT US",
+      "a11y.skip":"SKIP TO CONTENT","a11y.top":"Back to top",
+      "nav.services":"Services","nav.products":"Products","nav.process":"Process","nav.expertise":"Expertise","nav.faq":"FAQ","nav.about":"About","nav.contact":"Contact","nav.cta":"CONTACT US",
       "hero.badge":"SYSTEM ONLINE · ITALY · EU",
       "hero.title":"We integrate systems.",
       "hero.title2":"We accelerate business.",
@@ -1102,6 +1162,11 @@
       "tst.n2":"Head of Cyber","tst.r2":"National insurance group",
       "tst.q3":"VDI Agent is a game-changer for us. It lets consultants use AI inside the compliant VDI environment without compromising the security perimeter.",
       "tst.n3":"IT Director","tst.r3":"Defence & Aerospace",
+      "proc.label":"How we work","proc.title":"From first contact to go-live","proc.desc":"A structured four-phase path. Each step has concrete deliverables — no endless \"discovery\" phases without output.",
+      "proc.s1.t":"Discovery","proc.s1.d":"Technical analysis of systems, regulatory constraints, stakeholders. Output: gap assessment + scoping proposal.",
+      "proc.s2.t":"Design","proc.s2.d":"Target architecture, cost model, identified risks. Output: HLD/LLD signed off by the client.",
+      "proc.s3.t":"Implementation","proc.s3.d":"Sprint-based build, code and config in client repos, continuous security testing. Output: production environment.",
+      "proc.s4.t":"Operate","proc.s4.d":"24/7 run with contractual SLAs, or full handover to your internal team with runbooks.",
       "faq.label":"Frequently asked questions","faq.title":"What enterprise teams ask before signing","faq.desc":"Concrete answers to the most common objections from enterprise IT teams.",
       "faq.q1":"How do you handle confidentiality in regulated environments?",
       "faq.a1":"All projects start with an NDA. For finance, defence and public sector we use vetted personnel (NOS clearance where required), dedicated workstations, network segregation, and audit logs. We can operate on-premise or in client-tenant-isolated environments — no sensitive data leaves the authorized perimeter.",
@@ -1143,6 +1208,10 @@
     document.querySelectorAll('[data-i18n]').forEach(el=>{
       const k=el.getAttribute('data-i18n');
       if(I18N[lang][k]!==undefined) el.innerHTML = I18N[lang][k];
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(el=>{
+      const k=el.getAttribute('data-i18n-aria');
+      if(I18N[lang][k]!==undefined) el.setAttribute('aria-label', I18N[lang][k]);
     });
     document.querySelectorAll('.lang-switch button').forEach(b=>{
       b.classList.toggle('active', b.dataset.lang===lang);
