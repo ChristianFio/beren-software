@@ -1,135 +1,138 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Beren Software</title>
-<meta name="description" content="Informativa sul trattamento dei dati personali ai sensi del GDPR (Reg. UE 2016/679) di Beren Software.">
+<title>Privacy Policy | Beren Software</title>
+<meta name="description" content="GDPR data protection notice for berensoftware.com under EU Reg. 2016/679.">
 <link rel="canonical" href="https://berensoftware.com/privacy.html">
 <meta name="robots" content="index,follow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3l11 6.4v13.2L16 29 5 22.6V9.4z' fill='none' stroke='%2300f5ff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a2540'/%3E%3Cpath d='M16 7l9 5.2v7.6L16 25l-9-5.2v-7.6z' fill='none' stroke='%23635bff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
-<link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,600,700,800|jetbrains-mono:400,700&display=swap">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800|jetbrains-mono:400,500,700&display=swap">
 <style>
-  :root{--bg:#06060f;--surface:#0d0d1a;--border:rgba(0,245,255,0.12);--text:#e2e8f0;--text-soft:#cbd5e1;--dim:#94a3b8;--cyan:#00f5ff;--pink:#ff00a0}
+  :root{--bg:#fff;--soft:#f6f9fc;--border:#e3e8ee;--text:#0a2540;--text-soft:#3d4d63;--dim:#697386;--muted:#8898aa;--accent:#635bff;--accent-soft:#f1f0ff;--shadow:0 1px 2px rgba(15,30,60,.04),0 1px 3px rgba(15,30,60,.06)}
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:0 24px}
-  a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
-  .doc{max-width:780px;margin:0 auto;padding:120px 0 80px}
-  nav.top{position:fixed;top:0;left:0;right:0;background:rgba(6,6,15,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);z-index:50}
-  nav.top .inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
-  .logo{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:700;letter-spacing:1.5px;color:var(--text);display:flex;align-items:center;gap:10px}
-  .logo svg{width:20px;height:20px;color:var(--cyan)}
-  .logo .a{color:var(--cyan)}
-  .back{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:1px;color:var(--dim)}
-  .back:hover{color:var(--cyan);text-decoration:none}
-  h1{font-size:2.4rem;font-weight:800;margin-bottom:12px;letter-spacing:-.01em}
-  .updated{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--dim);margin-bottom:36px;letter-spacing:.5px}
-  h2{font-size:1.25rem;font-weight:700;margin:36px 0 12px;color:var(--text);letter-spacing:-.005em;padding-top:18px;border-top:1px solid var(--border)}
-  h2:first-of-type{border-top:0;padding-top:0}
-  h3{font-size:1rem;font-weight:700;margin:20px 0 8px;color:var(--cyan);font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
-  p,li{color:var(--text-soft);margin-bottom:12px;font-size:.96rem}
-  ul,ol{padding-left:24px;margin-bottom:14px}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+  .doc{max-width:760px;margin:0 auto;padding:120px 24px 80px}
+  nav.top{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);z-index:50}
+  nav.top .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+  .logo svg{width:28px;height:28px}
+  .logo .dot{color:var(--accent)}
+  .back{font-size:.9rem;color:var(--text-soft);font-weight:500;padding:8px 14px;border-radius:6px;transition:all .15s ease}
+  .back:hover{background:var(--soft);color:var(--text);text-decoration:none}
+  h1{font-size:clamp(2rem,4vw,2.6rem);font-weight:800;margin-bottom:14px;letter-spacing:-.02em;color:var(--text)}
+  .updated{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--dim);margin-bottom:36px;background:var(--soft);padding:8px 14px;border-radius:6px;display:inline-block}
+  h2{font-size:1.32rem;font-weight:700;margin:42px 0 14px;color:var(--text);padding-top:24px;border-top:1px solid var(--border);letter-spacing:-.01em}
+  h2:first-of-type{border-top:0;padding-top:0;margin-top:0}
+  h3{font-size:.94rem;font-weight:700;margin:22px 0 8px;color:var(--accent);font-family:'JetBrains Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
+  p,li{color:var(--text-soft);margin-bottom:12px;font-size:1rem}
+  ul,ol{padding-left:22px;margin-bottom:14px}
   li{margin-bottom:6px}
-  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.88rem}
-  th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top}
-  th{background:var(--surface);font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.5px;color:var(--cyan);font-weight:700}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.92rem;border-radius:8px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+  th,td{border:1px solid var(--border);padding:12px 14px;text-align:left;vertical-align:top}
+  th{background:var(--soft);font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.04em;color:var(--text);font-weight:700;text-transform:uppercase}
   td{color:var(--text-soft)}
-  .callout{background:var(--surface);border-left:3px solid var(--cyan);padding:14px 18px;border-radius:4px;margin:18px 0;font-size:.92rem}
-  footer{padding:28px 24px;border-top:1px solid var(--border);background:#040409}
-  footer .inner{max-width:1140px;margin:0 auto;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .callout{background:var(--accent-soft);border-left:3px solid var(--accent);padding:18px 20px;border-radius:8px;margin:24px 0;font-size:.96rem;color:var(--text)}
+  footer{padding:32px 24px;border-top:1px solid var(--border);background:var(--soft);margin-top:24px}
+  footer .inner{max-width:1200px;margin:0 auto;font-size:.82rem;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
   footer a{color:var(--dim)}footer a:hover{color:var(--text)}
-  @media(max-width:600px){h1{font-size:1.8rem}.doc{padding:100px 0 60px}}
+  @media(max-width:600px){h1{font-size:1.7rem}.doc{padding:96px 20px 60px}}
 </style>
 </head>
 <body>
 <nav class="top">
   <div class="inner">
     <a href="index.html" class="logo">
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M16 3l11 6.4v13.2L16 29 5 22.6V9.4z"/></svg>
-      <span>BEREN<span class="a">/</span>SOFTWARE</span>
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#0a2540"/>
+        <path d="M16 7l9 5.2v7.6L16 25l-9-5.2v-7.6z" stroke="#635bff"/>
+      </svg>
+      <span>Beren<span class="dot">.</span>Software</span>
     </a>
-    <a href="index.html" class="back">← TORNA AL SITO</a>
+    <a href="index.html" class="back">← Back to site</a>
   </div>
 </nav>
 
 <main class="doc">
   <h1>Privacy Policy</h1>
-  <p class="updated">Ultimo aggiornamento: 25 aprile 2026</p>
+  <p class="updated">Last updated: April 25, 2026</p>
 
-  <p>La presente informativa descrive le modalità di trattamento dei dati personali degli utenti che interagiscono con il sito <strong>berensoftware.com</strong> (il "Sito") ai sensi del Regolamento UE 2016/679 ("GDPR") e del D.lgs. 196/2003 e s.m.i. ("Codice Privacy").</p>
+  <p>This notice describes how personal data of users interacting with the website <strong>berensoftware.com</strong> (the "Site") is processed, pursuant to EU Regulation 2016/679 (the "GDPR") and Italian Legislative Decree 196/2003 as amended (the "Privacy Code").</p>
 
-  <h2>1. Titolare del trattamento</h2>
+  <h2>1. Data controller</h2>
   <p><strong>Beren Software</strong><br>
-  Sede legale: Italia<br>
+  Registered office: Italy<br>
   Email: <a href="mailto:info@berensoftware.com">info@berensoftware.com</a><br>
-  P.IVA: IT00000000000 — REA: RM-0000000</p>
-  <p>Per esercitare i diritti riconosciuti dal GDPR è possibile scrivere all'indirizzo email indicato.</p>
+  VAT: IT00000000000 · REA: RM-0000000</p>
+  <p>To exercise GDPR rights, please write to the email above.</p>
 
-  <h2>2. Tipi di dati raccolti</h2>
-  <h3>// Dati di navigazione</h3>
-  <p>Durante il loro normale esercizio, i sistemi informatici e le procedure software preposte al funzionamento del Sito acquisiscono alcuni dati la cui trasmissione è implicita nell'uso dei protocolli di comunicazione di Internet (es. indirizzi IP, timestamp, browser, referer). Questi dati sono utilizzati al solo fine di ricavare informazioni statistiche anonime sull'uso del sito e per controllarne il corretto funzionamento.</p>
+  <h2>2. Categories of data</h2>
+  <h3>// Browsing data</h3>
+  <p>During normal operation, IT systems and software procedures involved in running the Site acquire data whose transmission is implicit in the use of internet communication protocols (IP addresses, timestamps, browser information, referrer). This data is used solely to derive anonymous statistical information about Site usage and to monitor proper operation.</p>
 
-  <h3>// Dati forniti volontariamente dall'utente</h3>
-  <p>L'invio facoltativo, esplicito e volontario di dati attraverso il modulo di contatto presente sul Sito comporta la successiva acquisizione dei dati conferiti dal mittente, quali: nome, cognome, ruolo professionale, azienda, indirizzo email, contenuto della richiesta e ogni altro dato volontariamente comunicato.</p>
+  <h3>// Data voluntarily provided</h3>
+  <p>The optional, explicit and voluntary submission of data through the Site contact form involves the subsequent acquisition of data provided by the sender, including: name, surname, professional role, company, email address, content of the request, and any other data voluntarily communicated.</p>
 
-  <h3>// Cookie</h3>
-  <p>Il Sito utilizza esclusivamente cookie tecnici essenziali e cookie di preferenza (es. lingua, accettazione informativa cookie). Per i dettagli vedere la <a href="cookie-policy.html">Cookie Policy</a>.</p>
+  <h3>// Cookies</h3>
+  <p>The Site uses only essential technical cookies and preference storage. For details see the <a href="cookie-policy.html">Cookie Policy</a>.</p>
 
-  <h2>3. Finalità e basi giuridiche</h2>
+  <h2>3. Purpose and legal basis</h2>
   <table>
-    <thead><tr><th>Finalità</th><th>Base giuridica</th><th>Conservazione</th></tr></thead>
+    <thead><tr><th>Purpose</th><th>Legal basis</th><th>Retention</th></tr></thead>
     <tbody>
-      <tr><td>Risposta a richieste di contatto</td><td>Art. 6.1.b GDPR — esecuzione di misure precontrattuali</td><td>24 mesi dall'ultimo contatto</td></tr>
-      <tr><td>Adempimenti legali, fiscali e contabili</td><td>Art. 6.1.c GDPR — obbligo legale</td><td>10 anni</td></tr>
-      <tr><td>Difesa in giudizio</td><td>Art. 6.1.f GDPR — legittimo interesse</td><td>Termini di prescrizione</td></tr>
-      <tr><td>Sicurezza del Sito (log)</td><td>Art. 6.1.f GDPR — legittimo interesse</td><td>12 mesi</td></tr>
+      <tr><td>Reply to contact requests</td><td>Art. 6.1.b GDPR (pre-contractual measures)</td><td>24 months from last contact</td></tr>
+      <tr><td>Legal, fiscal, accounting obligations</td><td>Art. 6.1.c GDPR (legal obligation)</td><td>10 years</td></tr>
+      <tr><td>Defense in legal proceedings</td><td>Art. 6.1.f GDPR (legitimate interest)</td><td>Statutory limitation periods</td></tr>
+      <tr><td>Site security (logs)</td><td>Art. 6.1.f GDPR (legitimate interest)</td><td>12 months</td></tr>
     </tbody>
   </table>
 
-  <h2>4. Modalità del trattamento</h2>
-  <p>I dati personali sono trattati con strumenti automatizzati e manuali, secondo principi di liceità, correttezza, minimizzazione e limitazione delle finalità. Misure tecniche e organizzative adeguate (cifratura in transito, controllo degli accessi, logging) sono implementate per prevenire la perdita, l'uso illecito o non corretto e accessi non autorizzati ai dati.</p>
+  <h2>4. Processing methods</h2>
+  <p>Personal data is processed using automated and manual tools, following principles of lawfulness, fairness, minimization, and purpose limitation. Adequate technical and organizational measures (encryption in transit, access controls, logging) are in place to prevent loss, unlawful or incorrect use, and unauthorized access to data.</p>
 
-  <h2>5. Comunicazione e trasferimento dei dati</h2>
-  <p>I dati possono essere comunicati a:</p>
+  <h2>5. Communication and transfer of data</h2>
+  <p>Data may be communicated to:</p>
   <ul>
-    <li>Personale autorizzato e collaboratori interni di Beren Software, debitamente istruiti;</li>
-    <li>Fornitori di servizi tecnici (hosting, email, form processor) nominati Responsabili del trattamento ai sensi dell'art. 28 GDPR;</li>
-    <li>Autorità pubbliche, quando richiesto dalla legge.</li>
+    <li>Internal authorized personnel and collaborators of Beren Software, properly instructed;</li>
+    <li>Technical service providers (hosting, email, form processor) appointed as Data Processors under art. 28 GDPR;</li>
+    <li>Public authorities, when required by law.</li>
   </ul>
-  <p>Il modulo di contatto è gestito tramite il fornitore <strong>Web3Forms</strong> (UE/USA). Eventuali trasferimenti extra-UE avvengono sulla base di Clausole Contrattuali Standard adottate dalla Commissione Europea (decisione 2021/914) e/o di decisioni di adeguatezza ai sensi dell'art. 45 GDPR.</p>
+  <p>The contact form is handled via the provider <strong>Web3Forms</strong> (EU/USA). Any extra-EU transfers occur on the basis of Standard Contractual Clauses adopted by the European Commission (decision 2021/914) and/or adequacy decisions under art. 45 GDPR.</p>
 
-  <h2>6. Diritti dell'interessato</h2>
-  <p>L'utente può esercitare in qualsiasi momento i diritti previsti dagli artt. 15-22 GDPR:</p>
+  <h2>6. Data subject rights</h2>
+  <p>Users may exercise the rights set out in articles 15-22 GDPR at any time:</p>
   <ul>
-    <li>diritto di accesso ai propri dati personali;</li>
-    <li>diritto di rettifica dei dati inesatti;</li>
-    <li>diritto di cancellazione ("diritto all'oblio");</li>
-    <li>diritto di limitazione del trattamento;</li>
-    <li>diritto alla portabilità dei dati;</li>
-    <li>diritto di opposizione al trattamento basato sul legittimo interesse;</li>
-    <li>diritto di revocare il consenso in qualsiasi momento, senza pregiudicare la liceità del trattamento basata sul consenso prestato precedentemente alla revoca.</li>
+    <li>right of access to personal data;</li>
+    <li>right to rectification of inaccurate data;</li>
+    <li>right to erasure ("right to be forgotten");</li>
+    <li>right to restrict processing;</li>
+    <li>right to data portability;</li>
+    <li>right to object to processing based on legitimate interest;</li>
+    <li>right to withdraw consent at any time, without affecting the lawfulness of processing based on consent prior to withdrawal.</li>
   </ul>
-  <p>Per esercitare i diritti scrivere a <a href="mailto:info@berensoftware.com">info@berensoftware.com</a>. È inoltre possibile proporre reclamo all'Autorità Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>).</p>
+  <p>To exercise these rights, please write to <a href="mailto:info@berensoftware.com">info@berensoftware.com</a>. It is also possible to lodge a complaint with the Italian Data Protection Authority (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>).</p>
 
-  <h2>7. Conferimento dei dati</h2>
-  <p>Il conferimento dei dati contrassegnati come obbligatori nel modulo di contatto è necessario per dare riscontro alle richieste; il mancato conferimento comporta l'impossibilità di rispondere. Il conferimento dei dati contrassegnati come facoltativi è libero.</p>
+  <h2>7. Provision of data</h2>
+  <p>The provision of data marked as mandatory in the contact form is necessary to respond to requests; failure to provide such data will make it impossible to reply. The provision of optional fields is voluntary.</p>
 
-  <h2>8. Minori</h2>
-  <p>Il Sito non è destinato a minori di 16 anni. Beren Software non raccoglie consapevolmente dati riferibili a minori. Qualora un genitore o tutore venga a conoscenza di un trattamento di dati di un minore, è invitato a contattare immediatamente il Titolare per la cancellazione.</p>
+  <h2>8. Minors</h2>
+  <p>The Site is not intended for users under the age of 16. Beren Software does not knowingly collect data from minors. Should a parent or guardian become aware of such data being processed, they are invited to contact the Controller immediately for deletion.</p>
 
-  <h2>9. Modifiche</h2>
-  <p>La presente informativa può essere aggiornata in qualsiasi momento. Le modifiche saranno pubblicate su questa pagina con indicazione della data dell'ultimo aggiornamento.</p>
+  <h2>9. Changes</h2>
+  <p>This notice may be updated at any time. Changes will be published on this page with the date of the latest update.</p>
 
   <div class="callout">
-    <strong>In sintesi:</strong> ti contattiamo solo se ce lo chiedi, non vendiamo dati a nessuno, conserviamo le tue richieste fino a 24 mesi e puoi sempre chiederci di cancellarle scrivendo a <a href="mailto:info@berensoftware.com">info@berensoftware.com</a>.
+    <strong>In short:</strong> we only contact you if you ask us to, we don't sell data to anyone, we keep your requests for up to 24 months, and you can always request deletion by emailing <a href="mailto:info@berensoftware.com">info@berensoftware.com</a>.
   </div>
 </main>
 
 <footer>
   <div class="inner">
-    <span>&copy; <span id="y"></span> Beren Software · P.IVA IT00000000000</span>
-    <span><a href="index.html">Home</a> · <a href="cookie-policy.html">Cookie</a> · <a href="terms.html">Termini</a> · <a href="imprint.html">Dati legali</a></span>
+    <span>&copy; <span id="y"></span> Beren Software · VAT IT00000000000</span>
+    <span><a href="index.html">Home</a> · <a href="cookie-policy.html">Cookie</a> · <a href="terms.html">Terms</a> · <a href="imprint.html">Legal info</a></span>
   </div>
 </footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>

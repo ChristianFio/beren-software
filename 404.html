@@ -1,40 +1,63 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 — Beren Software</title>
+<title>Page not found | Beren Software</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3l11 6.4v13.2L16 29 5 22.6V9.4z' fill='none' stroke='%2300f5ff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a2540'/%3E%3Cpath d='M16 7l9 5.2v7.6L16 25l-9-5.2v-7.6z' fill='none' stroke='%23635bff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
-<link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,700,900|jetbrains-mono:400,700&display=swap">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,700,800,900|jetbrains-mono:400,700&display=swap">
 <style>
-  :root{--bg:#06060f;--text:#e2e8f0;--dim:#94a3b8;--cyan:#00f5ff;--pink:#ff00a0;--border:rgba(0,245,255,0.12)}
+  :root{--bg:#fff;--soft:#f6f9fc;--border:#e3e8ee;--text:#0a2540;--text-soft:#3d4d63;--dim:#697386;--accent:#635bff;--shadow:0 1px 2px rgba(15,30,60,.04),0 1px 3px rgba(15,30,60,.06);--shadow-md:0 4px 12px rgba(15,30,60,.06)}
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;background-image:radial-gradient(ellipse at top,rgba(0,245,255,.06),transparent 60%),radial-gradient(ellipse at bottom,rgba(255,0,160,.04),transparent 60%)}
-  .code{font-family:'JetBrains Mono',monospace;font-size:clamp(5rem,18vw,10rem);font-weight:900;line-height:1;letter-spacing:-.05em;background:linear-gradient(135deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px}
-  h1{font-size:1.6rem;font-weight:800;margin-bottom:14px;letter-spacing:-.01em}
-  p{color:var(--dim);max-width:480px;margin-bottom:28px;line-height:1.65}
-  .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-  a.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:6px;font-weight:700;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;text-decoration:none;transition:transform .2s ease}
-  a.btn:hover{transform:translateY(-1px)}
-  .btn-primary{background:var(--cyan);color:var(--bg)}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;text-align:center;line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;overflow:hidden}
+  body::before{content:'';position:absolute;top:-10%;left:-10%;right:-10%;bottom:-10%;background:radial-gradient(ellipse 50% 30% at 50% 0%,rgba(99,91,255,.10),transparent 60%),radial-gradient(ellipse 50% 30% at 80% 90%,rgba(0,212,193,.06),transparent 60%);z-index:-1}
+  .code{font-size:clamp(5rem,18vw,9rem);font-weight:900;line-height:1;letter-spacing:-.05em;background:linear-gradient(135deg,var(--accent),#9d6bff 50%,#00d4c1);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px}
+  h1{font-size:clamp(1.5rem,3vw,1.9rem);font-weight:800;margin-bottom:14px;letter-spacing:-.02em;color:var(--text)}
+  p.lead{color:var(--text-soft);max-width:520px;margin-bottom:32px;line-height:1.65}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:48px}
+  a.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:6px;font-weight:600;font-size:.94rem;text-decoration:none;transition:all .2s ease}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 1px 2px rgba(99,91,255,.2)}
+  .btn-primary:hover{background:#5147e8;transform:translateY(-1px);box-shadow:0 6px 14px rgba(99,91,255,.28)}
   .btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
-  .btn-secondary:hover{border-color:var(--cyan);color:var(--cyan)}
-  .term{margin-top:48px;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--dim);opacity:.7}
+  .btn-secondary:hover{border-color:var(--text)}
+  .nav-card{max-width:680px;width:100%;background:#fff;border:1px solid var(--border);border-radius:12px;padding:28px;text-align:left;box-shadow:var(--shadow)}
+  .nav-card h2{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.16em;color:var(--accent);margin-bottom:18px;text-transform:uppercase;font-weight:600}
+  .nav-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .nav-grid a{display:flex;align-items:center;gap:10px;padding:14px 16px;border:1px solid var(--border);border-radius:8px;color:var(--text-soft);font-size:.92rem;text-decoration:none;transition:all .15s ease;font-weight:500}
+  .nav-grid a:hover{border-color:var(--accent);color:var(--text);background:#f1f0ff;transform:translateY(-1px)}
+  .nav-grid a::before{content:'›';color:var(--accent);font-weight:700}
+  .term{margin-top:48px;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--dim)}
   .term::before{content:'> '}
-  .term::after{content:'_';animation:b 1s steps(2) infinite;color:var(--cyan)}
+  .term::after{content:'_';animation:b 1s steps(2) infinite;color:var(--accent)}
   @keyframes b{50%{opacity:0}}
+  @media(max-width:600px){.nav-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
   <div class="code">404</div>
-  <h1>Risorsa non trovata</h1>
-  <p>La pagina che stai cercando non esiste, è stata rimossa o non è mai stata pubblicata. Torna alla home o aprici una segnalazione.</p>
+  <h1>Page not found</h1>
+  <p class="lead">The page you're looking for doesn't exist, has been moved or was never published.</p>
   <div class="actions">
-    <a href="/" class="btn btn-primary">↩ HOME</a>
-    <a href="mailto:info@berensoftware.com" class="btn btn-secondary">CONTATTACI</a>
+    <a href="/" class="btn btn-primary">Back to home</a>
+    <a href="mailto:info@berensoftware.com" class="btn btn-secondary">Contact us</a>
   </div>
+
+  <nav class="nav-card" aria-label="Main sections">
+    <h2>// Where would you like to go?</h2>
+    <div class="nav-grid">
+      <a href="/#services">Services</a>
+      <a href="/#product">Product (VDI Agent)</a>
+      <a href="/#process">How we work</a>
+      <a href="/#expertise">Tech stack</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+      <a href="https://vdiagent.ai" target="_blank" rel="noopener">VDI Agent → vdiagent.ai</a>
+    </div>
+  </nav>
+
   <div class="term">connection_lost: route_not_found</div>
 </body>
 </html>
