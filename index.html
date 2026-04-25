@@ -144,10 +144,69 @@
     .logo-text{font-family:'Inter',sans-serif;font-weight:700}
     .logo-text .dot{color:var(--accent)}
     .nav-links{list-style:none;display:flex;gap:6px;align-items:center;margin-left:8px}
-    .nav-links a{display:inline-block;padding:8px 12px;color:var(--text-soft);font-size:.92rem;font-weight:500;border-radius:6px;transition:color .15s ease;position:relative}
-    .nav-links a::after{content:'';position:absolute;left:12px;right:12px;bottom:4px;height:2px;background:linear-gradient(90deg,var(--accent),#9d6bff);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);border-radius:2px}
-    .nav-links a:hover{color:var(--text)}
-    .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-links > li{position:relative}
+    .nav-links > li > a,.nav-links > li > button{display:inline-flex;align-items:center;gap:4px;padding:8px 12px;color:var(--text-soft);font-size:.92rem;font-weight:500;border-radius:6px;transition:color .15s ease;position:relative;font-family:inherit;background:transparent;border:0;cursor:pointer}
+    .nav-links > li > a::after,.nav-links > li > button::after{content:'';position:absolute;left:12px;right:12px;bottom:4px;height:2px;background:linear-gradient(90deg,var(--accent),#9d6bff);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);border-radius:2px}
+    .nav-links > li > a:hover,.nav-links > li > button:hover{color:var(--text)}
+    .nav-links > li > a:hover::after,.nav-links > li > button:hover::after{transform:scaleX(1)}
+    .nav-links .has-mega > button .chev{width:11px;height:11px;transition:transform .25s ease;color:var(--text-muted)}
+    .nav-links .has-mega.open > button .chev{transform:rotate(180deg);color:var(--accent)}
+    .nav-links .has-mega.open > button{color:var(--text)}
+    .nav-links .has-mega.open > button::after{transform:scaleX(1)}
+
+    /* Mega menu */
+    .mega{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-8px);background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:0 24px 60px rgba(15,30,60,.14),0 6px 16px rgba(15,30,60,.06);padding:24px;width:740px;max-width:calc(100vw - 48px);opacity:0;pointer-events:none;transition:opacity .22s var(--ease),transform .22s var(--ease);z-index:60}
+    .has-mega.open > .mega{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+    .mega-arrow{position:absolute;top:-7px;left:50%;transform:translateX(-50%) rotate(45deg);width:14px;height:14px;background:#fff;border-left:1px solid var(--border);border-top:1px solid var(--border);border-radius:2px}
+    .mega-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+    .mega-item{display:flex;gap:14px;padding:12px;border-radius:10px;color:var(--text);transition:background .15s ease}
+    .mega-item:hover{background:var(--bg-soft)}
+    .mega-item .mi-ico{width:36px;height:36px;flex-shrink:0;border-radius:8px;background:linear-gradient(135deg,var(--accent-soft),#fff);border:1px solid var(--border);color:var(--accent);display:flex;align-items:center;justify-content:center}
+    .mega-item .mi-ico svg{width:18px;height:18px}
+    .mega-item .mi-text strong{display:block;font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:2px;letter-spacing:-.005em}
+    .mega-item .mi-text span{display:block;font-size:.78rem;color:var(--text-dim);line-height:1.45}
+    .mega-promo{margin-top:18px;padding:18px 20px;background:linear-gradient(135deg,var(--bg-dark),#162a52);border-radius:10px;display:flex;justify-content:space-between;align-items:center;gap:14px;color:#fff;position:relative;overflow:hidden}
+    .mega-promo::before{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(99,91,255,.4),transparent 70%);right:-60px;top:-60px;filter:blur(30px)}
+    .mega-promo > *{position:relative;z-index:1}
+    .mega-promo .mp-text strong{display:block;font-size:.9rem;font-weight:700;margin-bottom:4px}
+    .mega-promo .mp-text span{font-size:.78rem;color:rgba(255,255,255,.7)}
+    .mega-promo .mp-cta{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;color:#9d8fff;letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;flex-shrink:0}
+    .mega-promo .mp-cta:hover{color:#fff}
+
+    /* === STACKED SCROLL CARDS === */
+    .stacked{padding:96px 0;background:var(--bg-soft);position:relative}
+    .stacked .container{max-width:1100px}
+    .stacked-track{margin-top:48px;display:flex;flex-direction:column;gap:24px}
+    .stacked-card{position:sticky;background:#fff;border:1px solid var(--border);border-radius:var(--radius-xl);padding:48px;box-shadow:var(--shadow-md);min-height:340px;display:grid;grid-template-columns:auto 1fr 1.1fr;gap:36px;align-items:center;transform-origin:top center;will-change:transform,opacity;transition:transform .3s var(--ease)}
+    .stacked-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,91,255,.05),transparent 50%);border-radius:inherit;opacity:0;transition:opacity .3s ease;pointer-events:none}
+    .stacked-card:hover::before{opacity:1}
+    .stacked-card:nth-child(1){top:calc(var(--nav-h) + 24px);z-index:1}
+    .stacked-card:nth-child(2){top:calc(var(--nav-h) + 36px);z-index:2}
+    .stacked-card:nth-child(3){top:calc(var(--nav-h) + 48px);z-index:3}
+    .sc-num{font-family:'JetBrains Mono',monospace;font-size:3rem;font-weight:800;color:var(--accent);background:linear-gradient(135deg,var(--accent),#9d6bff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;letter-spacing:-.04em;animation:gradientShift 11s linear infinite}
+    .sc-info h3{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:12px;letter-spacing:-.015em}
+    .sc-info p{font-size:1rem;color:var(--text-soft);line-height:1.6;margin-bottom:16px}
+    .sc-info ul{list-style:none}
+    .sc-info ul li{position:relative;padding-left:22px;margin-bottom:8px;font-size:.9rem;color:var(--text-soft);line-height:1.5}
+    .sc-info ul li::before{content:'';position:absolute;left:0;top:5px;width:14px;height:14px;background:var(--accent);border-radius:50%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M3 7l3 3 5-5'/%3E%3C/svg%3E");background-size:14px;background-position:center}
+    .sc-visual{position:relative;height:240px;background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .sc-visual.v-code{background:linear-gradient(135deg,#0a2540,#162a52);font-family:'JetBrains Mono',monospace;font-size:.7rem;line-height:1.7;padding:24px;align-items:flex-start;justify-content:flex-start;color:rgba(255,255,255,.85);text-align:left;flex-direction:column;gap:0}
+    .sc-visual.v-code .l{display:block}
+    .sc-visual.v-code .l-key{color:#9d8fff}
+    .sc-visual.v-code .l-str{color:#5fffe8}
+    .sc-visual.v-code .l-com{color:#5a7a9e;font-style:italic}
+    .sc-visual.v-shield{background:radial-gradient(circle at 50% 50%,rgba(99,91,255,.10),transparent 70%)}
+    .sc-visual.v-shield svg{width:140px;height:140px;color:var(--accent);filter:drop-shadow(0 8px 16px rgba(99,91,255,.18))}
+    .sc-visual.v-handover{background:radial-gradient(circle at 50% 50%,rgba(0,212,193,.10),transparent 70%);position:relative}
+    .sc-visual.v-handover .ho-row{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;background:#fff;border:1px solid var(--border);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text);margin:4px;box-shadow:var(--shadow-sm)}
+    .sc-visual.v-handover .ho-row svg{width:14px;height:14px;color:var(--green);flex-shrink:0}
+    .sc-visual.v-handover .ho-stack{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:24px}
+    @media(max-width:980px){
+      .stacked-card{grid-template-columns:1fr;gap:24px;padding:32px;min-height:auto;position:static!important}
+      .stacked-track{gap:16px}
+      .sc-visual{height:180px}
+      .sc-num{font-size:2.4rem}
+    }
     .nav-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
 
     .hamburger{display:none;width:40px;height:40px;align-items:center;justify-content:center;border-radius:6px;color:var(--text-soft)}
@@ -770,12 +829,74 @@
       <span class="logo-text">Beren<span class="dot">.</span>Software</span>
     </a>
     <ul class="nav-links" role="list">
-      <li><a href="#services">Services</a></li>
+      <li class="has-mega" data-mega="services">
+        <button type="button" aria-expanded="false">Services <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 5 6 8 9 5"/></svg></button>
+        <div class="mega" role="menu">
+          <span class="mega-arrow" aria-hidden="true"></span>
+          <div class="mega-grid">
+            <a href="#services" class="mega-item" role="menuitem">
+              <span class="mi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+              <span class="mi-text"><strong>System Integration</strong><span>ERP, CRM, middleware, API gateways</span></span>
+            </a>
+            <a href="#services" class="mega-item" role="menuitem">
+              <span class="mi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+              <span class="mi-text"><strong>Virtual Desktop Infrastructure</strong><span>Citrix, VMware Horizon, AVD, AWS WorkSpaces</span></span>
+            </a>
+            <a href="#services" class="mega-item" role="menuitem">
+              <span class="mi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0-3 3 3 3 0 0 0 0 6 3 3 0 0 0 3 3 3 3 0 0 0 6 0 3 3 0 0 0 3-3 3 3 0 0 0 0-6 3 3 0 0 0-3-3 3 3 0 0 0-3-3z"/></svg></span>
+              <span class="mi-text"><strong>AI &amp; Automation</strong><span>LLMs, document understanding, RPA</span></span>
+            </a>
+            <a href="#services" class="mega-item" role="menuitem">
+              <span class="mi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+              <span class="mi-text"><strong>Cybersecurity</strong><span>SOC, hardening, NIS2/DORA gap</span></span>
+            </a>
+            <a href="#services" class="mega-item" role="menuitem">
+              <span class="mi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0 0-9h-1.8A7 7 0 1 0 4 13"/></svg></span>
+              <span class="mi-text"><strong>Cloud &amp; Hybrid</strong><span>Azure, AWS, GCP, multi-cloud</span></span>
+            </a>
+            <a href="#services" class="mega-item" role="menuitem">
+              <span class="mi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 20v-6m0 0V8m0 6h6m-6 0H6"/></svg></span>
+              <span class="mi-text"><strong>Managed Services</strong><span>24/7, SLA up to 99.99%, L1-L3</span></span>
+            </a>
+          </div>
+          <div class="mega-promo">
+            <div class="mp-text"><strong>VDI Agent — flagship product</strong><span>AI assistant inside locked-down VDI environments. Zero footprint.</span></div>
+            <a href="https://vdiagent.ai" target="_blank" rel="noopener" class="mp-cta">vdiagent.ai →</a>
+          </div>
+        </div>
+      </li>
       <li><a href="#product">Product</a></li>
       <li><a href="#code">Infra-as-code</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#ops">Operations</a></li>
-      <li><a href="#engagement">Engagement</a></li>
+      <li class="has-mega" data-mega="engagement">
+        <button type="button" aria-expanded="false">Engagement <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 5 6 8 9 5"/></svg></button>
+        <div class="mega" role="menu" style="width:540px">
+          <span class="mega-arrow" aria-hidden="true"></span>
+          <div class="mega-grid">
+            <a href="#engagement" class="mega-item" role="menuitem">
+              <span class="mi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+              <span class="mi-text"><strong>Project-based</strong><span>Fixed scope, fixed price, 3-9 months</span></span>
+            </a>
+            <a href="#engagement" class="mega-item" role="menuitem">
+              <span class="mi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+              <span class="mi-text"><strong>Dedicated team</strong><span>Embedded squad, T&amp;M, 6-24 months</span></span>
+            </a>
+            <a href="#engagement" class="mega-item" role="menuitem">
+              <span class="mi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+              <span class="mi-text"><strong>Managed services</strong><span>SLA-backed, 12-60 months, subscription</span></span>
+            </a>
+            <a href="#engagement" class="mega-item" role="menuitem">
+              <span class="mi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M9 14l-2 8 5-3 5 3-2-8"/></svg></span>
+              <span class="mi-text"><strong>Advisory</strong><span>Day-rate experts, 2-12 weeks</span></span>
+            </a>
+          </div>
+          <div class="mega-promo">
+            <div class="mp-text"><strong>Not sure which fits?</strong><span>Book a 30-min discovery call. Free, no commitment.</span></div>
+            <a href="https://cal.com/berensoftware/discovery" target="_blank" rel="noopener" class="mp-cta">Book →</a>
+          </div>
+        </div>
+      </li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-actions">
@@ -1425,6 +1546,80 @@
         <h4>Networking</h4>
         <p>SD-WAN · MPLS · Zero Trust · VPN · F5</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= STACKED CARDS ============= -->
+<section class="stacked reveal" id="principles">
+  <div class="container">
+    <p class="eyebrow">Built differently</p>
+    <h2 class="title word-reveal">Three commitments we put in writing.</h2>
+    <p class="subtitle">Promises you'll find in our Statement of Work, not just on this page.</p>
+
+    <div class="stacked-track">
+      <article class="stacked-card">
+        <div class="sc-num">01</div>
+        <div class="sc-info">
+          <h3>Code-first delivery</h3>
+          <p>Every line of infrastructure, every config file, every runbook lives in your repository. Not on our laptops, not in a private wiki we own.</p>
+          <ul>
+            <li>Your repos, your CI, your code review process</li>
+            <li>Architectural decision records as plain markdown</li>
+            <li>Reproducible from a clean machine in under an hour</li>
+          </ul>
+        </div>
+        <div class="sc-visual v-code" aria-hidden="true">
+          <span class="l"><span class="l-com"># your-org/infra</span></span>
+          <span class="l"><span class="l-key">resource</span> <span class="l-str">"azurerm_resource_group"</span> {</span>
+          <span class="l">  name = <span class="l-str">"rg-prod-eu"</span></span>
+          <span class="l">  tags = local.common_tags</span>
+          <span class="l">}</span>
+          <span class="l">&nbsp;</span>
+          <span class="l"><span class="l-com"># beren-co-author: 2 PRs/week</span></span>
+        </div>
+      </article>
+
+      <article class="stacked-card">
+        <div class="sc-num">02</div>
+        <div class="sc-info">
+          <h3>Security baked in, not bolted on</h3>
+          <p>Threat modeling at design time. Encryption at rest and in transit, by default. Audit logs that pass a regulator review without a panic week.</p>
+          <ul>
+            <li>OWASP review and dependency scanning in every CI run</li>
+            <li>Secrets in your vault, never in env files</li>
+            <li>Immutable infrastructure, signed builds, SBOM on demand</li>
+          </ul>
+        </div>
+        <div class="sc-visual v-shield" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+            <path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="stacked-card">
+        <div class="sc-num">03</div>
+        <div class="sc-info">
+          <h3>Exit on demand</h3>
+          <p>The day you decide to bring it in-house or change partner, we hand over in 2-4 weeks. Documented. Tested. Without drama.</p>
+          <ul>
+            <li>Knowledge transfer sessions recorded and indexed</li>
+            <li>Runbooks proven by your team, not by us</li>
+            <li>Access transitions managed without service interruption</li>
+          </ul>
+        </div>
+        <div class="sc-visual v-handover" aria-hidden="true">
+          <div class="ho-stack">
+            <span class="ho-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4 10-10"/></svg>runbooks/</span>
+            <span class="ho-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4 10-10"/></svg>adr/</span>
+            <span class="ho-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4 10-10"/></svg>secrets-rotation</span>
+            <span class="ho-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4 10-10"/></svg>access-matrix.yaml</span>
+            <span class="ho-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4 10-10"/></svg>training/</span>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -2299,6 +2494,80 @@
     }
   }, {passive:true});
   updateNavCompact();
+
+  // === MEGA MENU ===
+  document.querySelectorAll('.has-mega').forEach(li=>{
+    const btn = li.querySelector('button');
+    let closeT = null;
+    function open(){
+      clearTimeout(closeT);
+      // Close other megas
+      document.querySelectorAll('.has-mega.open').forEach(o=>{
+        if(o !== li){ o.classList.remove('open'); o.querySelector('button')?.setAttribute('aria-expanded','false'); }
+      });
+      li.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+    }
+    function scheduleClose(){
+      clearTimeout(closeT);
+      closeT = setTimeout(()=>{
+        li.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      }, 160);
+    }
+    li.addEventListener('mouseenter', open);
+    li.addEventListener('mouseleave', scheduleClose);
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const isOpen = li.classList.contains('open');
+      if(isOpen){ li.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+      else open();
+    });
+    btn.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){ li.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.focus(); }
+    });
+  });
+  // Close on outside click
+  document.addEventListener('click', (e)=>{
+    if(!e.target.closest('.has-mega')){
+      document.querySelectorAll('.has-mega.open').forEach(o=>{
+        o.classList.remove('open');
+        o.querySelector('button')?.setAttribute('aria-expanded','false');
+      });
+    }
+  });
+
+  // === HERO PARALLAX (subtle scroll-driven) ===
+  const heroEl = document.querySelector('.hero');
+  if(heroEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const heroH1 = heroEl.querySelector('h1');
+    const heroLead = heroEl.querySelector('p.lead');
+    const heroCta = heroEl.querySelector('.hero-cta');
+    const heroStats = heroEl.querySelector('.stats');
+    const heroBadge = heroEl.querySelector('.hero-badge');
+    let heroTicking = false;
+    function updateHero(){
+      const scrolled = window.pageYOffset;
+      const heroH = heroEl.offsetHeight;
+      if(scrolled > heroH){ return; }
+      const ratio = scrolled / heroH;
+      const fadeOut = Math.max(0, 1 - ratio * 1.6);
+      if(heroBadge) heroBadge.style.transform = `translateY(${scrolled * 0.15}px)`;
+      if(heroH1) heroH1.style.transform = `translateY(${scrolled * 0.25}px)`;
+      if(heroLead) heroLead.style.transform = `translateY(${scrolled * 0.4}px)`;
+      if(heroCta) heroCta.style.transform = `translateY(${scrolled * 0.55}px)`;
+      if(heroStats) heroStats.style.transform = `translateY(${scrolled * 0.18}px)`;
+      [heroBadge, heroH1, heroLead, heroCta, heroStats].forEach(el=>{
+        if(el) el.style.opacity = fadeOut;
+      });
+    }
+    window.addEventListener('scroll', ()=>{
+      if(!heroTicking){
+        requestAnimationFrame(()=>{ updateHero(); heroTicking = false; });
+        heroTicking = true;
+      }
+    }, {passive:true});
+  }
 
   // === MOUSE PARALLAX ON HERO ORBS ===
   const heroMesh = document.getElementById('heroMesh');
