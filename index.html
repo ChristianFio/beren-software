@@ -220,6 +220,45 @@
     .mobile-drawer li a{display:block;padding:16px 4px;color:var(--text);font-size:1rem;font-weight:500}
     .mobile-drawer .drawer-cta{margin-top:24px;display:block;width:100%;text-align:center;justify-content:center}
 
+    /* === STRIPE-STYLE FAN SECTION === */
+    .fan-section{position:relative;padding:0;background:linear-gradient(180deg,#fffaf2 0%,#ffeed8 25%,#ffdcb6 55%,#ffc69a 80%,#ffb583 100%);border-top:1px solid var(--border);overflow:hidden;isolation:isolate}
+    .fan-section[data-theme="dark"]{background:linear-gradient(180deg,#0d0a1f 0%,#1a0f2e 30%,#2a1240 70%,#1f0a36 100%)}
+    .fan-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding:48px 24px 36px;max-width:var(--maxw);margin:0 auto;position:relative;border-bottom:1px solid rgba(124,58,237,.16)}
+    .fan-section[data-theme="dark"] .fan-stats{border-bottom-color:rgba(255,255,255,.08)}
+    .fan-stats::before{content:'';position:absolute;left:24px;right:24px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(236,72,153,.4),rgba(124,58,237,.4),rgba(236,72,153,.4),transparent)}
+    .fan-stat .num{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;letter-spacing:-.025em;line-height:1;color:#3a1d70;font-family:'Inter',sans-serif}
+    .fan-section[data-theme="dark"] .fan-stat .num{color:#fff}
+    .fan-stat .num .suf{font-size:.7em;color:#7a3aa8;margin-left:1px}
+    .fan-section[data-theme="dark"] .fan-stat .num .suf{color:#c4b9ff}
+    .fan-stat .lbl{font-size:.88rem;color:#6e3aa3;margin-top:10px;line-height:1.45;max-width:240px}
+    .fan-section[data-theme="dark"] .fan-stat .lbl{color:rgba(255,255,255,.7)}
+    .fan-canvas-wrap{position:relative;height:540px;overflow:hidden;contain:strict}
+    .fan-canvas-wrap canvas{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+    .fan-controls{position:absolute;top:18px;right:18px;display:flex;gap:6px;z-index:2}
+    .fan-ctrl{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.55);border:1px solid rgba(124,58,237,.25);color:#7c3aed;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .15s ease,transform .15s ease,color .15s ease,border-color .15s ease}
+    .fan-ctrl:hover{background:rgba(255,255,255,.85);transform:translateY(-1px);color:#5b21b6}
+    .fan-section[data-theme="dark"] .fan-ctrl{background:rgba(20,10,40,.5);border-color:rgba(157,143,255,.3);color:#c4b9ff}
+    .fan-section[data-theme="dark"] .fan-ctrl:hover{background:rgba(20,10,40,.8);color:#fff}
+    .fan-ctrl svg{width:15px;height:15px}
+    .fan-ctrl[data-state="paused"] .ico-pause{display:none}
+    .fan-ctrl[data-state="paused"] .ico-play{display:block}
+    .fan-ctrl .ico-play{display:none}
+    .fan-overlay-text{position:absolute;left:50%;top:36px;transform:translateX(-50%);text-align:center;z-index:1;pointer-events:none;color:#3a1d70;text-shadow:0 1px 2px rgba(255,255,255,.4)}
+    .fan-section[data-theme="dark"] .fan-overlay-text{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+    .fan-overlay-text .eyebrow{color:#7c3aed;display:inline-block;margin-bottom:10px}
+    .fan-section[data-theme="dark"] .fan-overlay-text .eyebrow{color:#c4b9ff}
+    .fan-overlay-text h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;max-width:680px;text-wrap:balance}
+    @media(max-width:880px){
+      .fan-stats{grid-template-columns:1fr 1fr;gap:20px;padding:36px 20px}
+      .fan-canvas-wrap{height:420px}
+    }
+    @media(max-width:540px){
+      .fan-stats{grid-template-columns:1fr;gap:18px}
+      .fan-stat .lbl{max-width:none}
+      .fan-canvas-wrap{height:340px}
+    }
+    @media (prefers-reduced-motion:reduce){.fan-canvas-wrap canvas{display:none}}
+
     /* === ANNOUNCEMENT BANNER === */
     .announce{position:relative;z-index:55;background:linear-gradient(90deg,#0a2540,#1a2a52 30%,#2c2566 60%,#0a2540);background-size:200% auto;color:#fff;font-size:.86rem;animation:announceShift 12s linear infinite;display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 20px;text-align:center;flex-wrap:wrap;overflow:hidden}
     @keyframes announceShift{from{background-position:0% 50%}to{background-position:200% 50%}}
@@ -1018,6 +1057,47 @@
         <div class="stat"><div class="num">24<span class="accent">/</span>7</div><div class="lbl">Monitoring &amp; support</div></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============= STRIPE-STYLE FAN ============= -->
+<section class="fan-section reveal" id="fan" data-theme="light">
+  <div class="fan-stats">
+    <div class="fan-stat">
+      <div class="num"><span data-fan-count="8">8</span><span class="suf">+</span></div>
+      <div class="lbl">VDI platforms supported in production</div>
+    </div>
+    <div class="fan-stat">
+      <div class="num"><span data-fan-count="50">50</span><span class="suf">+</span></div>
+      <div class="lbl">Enterprise clients across the EU</div>
+    </div>
+    <div class="fan-stat">
+      <div class="num"><span data-fan-count="99.99" data-fan-decimals="2">99.99</span><span class="suf">%</span></div>
+      <div class="lbl">Contractual SLA on managed services</div>
+    </div>
+    <div class="fan-stat">
+      <div class="num"><span data-fan-count="4000">4,000</span><span class="suf">+</span></div>
+      <div class="lbl">Desktops migrated without a single outage</div>
+    </div>
+  </div>
+
+  <div class="fan-canvas-wrap" id="fanWrap">
+    <div class="fan-overlay-text">
+      <p class="eyebrow">Connected to every regulated industry</p>
+      <h2>One partner. Every system you run.</h2>
+    </div>
+    <div class="fan-controls">
+      <button class="fan-ctrl" id="fanPauseBtn" data-state="playing" aria-label="Pause animation" title="Pause">
+        <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+      </button>
+      <button class="fan-ctrl" id="fanThemeBtn" aria-label="Toggle theme" title="Toggle dark/light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 18h6"/><path d="M10 22h4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M12 2v2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/>
+        </svg>
+      </button>
+    </div>
+    <canvas id="fanCanvas" aria-hidden="true"></canvas>
   </div>
 </section>
 
@@ -2550,6 +2630,244 @@
     }
   }, {passive:true});
   updateNavCompact();
+
+  // === STRIPE-STYLE FAN ANIMATION ===
+  (function initFan(){
+    const wrap = document.getElementById('fanWrap');
+    const canvas = document.getElementById('fanCanvas');
+    const section = document.getElementById('fan');
+    const pauseBtn = document.getElementById('fanPauseBtn');
+    const themeBtn = document.getElementById('fanThemeBtn');
+    if(!canvas || !wrap || !section) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const ctx = canvas.getContext('2d');
+    let dpr = 1;
+    let rays = [];
+    let baseX = 0, baseY = 0;
+    let maxR = 0;
+    let isPaused = false;
+    let isVisible = false;
+    let raf = null;
+    let darkMode = false;
+
+    // Color palettes
+    const PALETTES = {
+      light: {
+        // Stops sampled along ray length (0 = base, 1 = tip)
+        stops: [
+          [0.00, [124, 58, 237], 0.78],   // deep purple
+          [0.45, [186, 65, 200], 0.62],   // magenta-purple
+          [0.70, [236, 72, 153], 0.50],   // pink
+          [0.92, [245, 158, 11], 0.32],   // amber
+          [1.00, [253, 186, 116], 0.10]   // soft peach
+        ],
+        dot: [124, 58, 237],
+        dotAlpha: 0.42
+      },
+      dark: {
+        stops: [
+          [0.00, [157, 143, 255], 0.85],
+          [0.45, [199, 110, 240], 0.65],
+          [0.70, [255, 89, 200], 0.50],
+          [0.92, [255, 175, 110], 0.30],
+          [1.00, [255, 220, 140], 0.10]
+        ],
+        dot: [199, 110, 240],
+        dotAlpha: 0.55
+      }
+    };
+
+    function applyPaletteToGradient(g, palette){
+      palette.stops.forEach(s=>{
+        const [pos, rgb, a] = s;
+        g.addColorStop(pos, `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`);
+      });
+    }
+
+    function makeRay(){
+      // angle: -8° to 188° (slight wrap below horizon for organic feel)
+      // 0 = right horizon, 90 = up, 180 = left horizon
+      const deg = -8 + Math.random() * 196;
+      const theta = deg * Math.PI / 180;
+      // Length distribution: most rays medium, some short, some long
+      let lenMul = Math.random();
+      if(lenMul < 0.12) lenMul = 0.18 + Math.random() * 0.18;       // short stragglers
+      else if(lenMul < 0.85) lenMul = 0.55 + Math.random() * 0.4;   // typical
+      else lenMul = 0.85 + Math.random() * 0.18;                    // long boundary rays
+      return {
+        angle: theta,
+        maxLength: maxR * lenMul,
+        length: 0,
+        growSpeed: 1.2 + Math.random() * 2.4,
+        retractSpeed: 0.6 + Math.random() * 1.4,
+        phase: 'growing',
+        hold: 0,
+        maxHold: 30 + Math.random() * 220,
+        delay: Math.floor(Math.random() * 60),
+        width: 0.45 + Math.random() * 0.95,
+        showDot: Math.random() > 0.55,
+        dotSize: 1.2 + Math.random() * 1.4,
+        opacity: 0.55 + Math.random() * 0.45
+      };
+    }
+
+    function buildRays(){
+      const rect = wrap.getBoundingClientRect();
+      // density tuned for visual richness without killing perf
+      const targetCount = Math.min(400, Math.max(180, Math.floor(rect.width / 4.2)));
+      rays = new Array(targetCount).fill(0).map(makeRay);
+    }
+
+    function resizeFan(){
+      const rect = wrap.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+      canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+      baseX = rect.width / 2;
+      baseY = rect.height + 6; // slightly below visible area
+      maxR = Math.hypot(rect.width / 2, rect.height) * 0.98;
+      buildRays();
+    }
+
+    function tick(){
+      if(!isVisible){ raf = null; return; }
+      if(isPaused){ raf = requestAnimationFrame(tick); return; }
+
+      const w = canvas.width / dpr;
+      const h = canvas.height / dpr;
+      ctx.clearRect(0, 0, w, h);
+
+      const palette = darkMode ? PALETTES.dark : PALETTES.light;
+
+      for(let i = 0; i < rays.length; i++){
+        const ray = rays[i];
+        // Update lifecycle
+        if(ray.delay > 0){ ray.delay--; }
+        else if(ray.phase === 'growing'){
+          ray.length += ray.growSpeed;
+          if(ray.length >= ray.maxLength){
+            ray.length = ray.maxLength;
+            ray.phase = 'holding';
+          }
+        } else if(ray.phase === 'holding'){
+          ray.hold++;
+          if(ray.hold > ray.maxHold) ray.phase = 'retracting';
+        } else {
+          ray.length -= ray.retractSpeed;
+          if(ray.length <= 0){
+            // Re-spawn with new params
+            const fresh = makeRay();
+            Object.assign(ray, fresh);
+          }
+        }
+
+        if(ray.length <= 0) continue;
+
+        // Compute endpoint
+        const x2 = baseX + Math.cos(ray.angle) * ray.length;
+        const y2 = baseY - Math.sin(ray.angle) * ray.length;
+
+        // Per-ray gradient along its axis
+        const grad = ctx.createLinearGradient(baseX, baseY, x2, y2);
+        applyPaletteToGradient(grad, palette);
+
+        ctx.globalAlpha = ray.opacity;
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = ray.width;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(baseX, baseY);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+
+        // Endpoint dot on a subset of rays
+        if(ray.showDot && ray.length > maxR * 0.18){
+          ctx.fillStyle = `rgba(${palette.dot[0]},${palette.dot[1]},${palette.dot[2]},${palette.dotAlpha})`;
+          ctx.beginPath();
+          ctx.arc(x2, y2, ray.dotSize, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      ctx.globalAlpha = 1;
+      raf = requestAnimationFrame(tick);
+    }
+
+    // Init + observers
+    resizeFan();
+    let resizeT = null;
+    window.addEventListener('resize', ()=>{
+      clearTimeout(resizeT);
+      resizeT = setTimeout(resizeFan, 200);
+    });
+
+    if('IntersectionObserver' in window){
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            if(!isVisible){
+              isVisible = true;
+              if(!raf) tick();
+            }
+          } else {
+            isVisible = false;
+            if(raf){ cancelAnimationFrame(raf); raf = null; }
+          }
+        });
+      }, {threshold: 0.05});
+      io.observe(wrap);
+    } else {
+      isVisible = true;
+      tick();
+    }
+
+    // Pause / play
+    pauseBtn?.addEventListener('click', ()=>{
+      isPaused = !isPaused;
+      pauseBtn.dataset.state = isPaused ? 'paused' : 'playing';
+      pauseBtn.setAttribute('aria-label', isPaused ? 'Play animation' : 'Pause animation');
+      pauseBtn.title = isPaused ? 'Play' : 'Pause';
+    });
+
+    // Theme toggle (light <-> dark)
+    themeBtn?.addEventListener('click', ()=>{
+      darkMode = !darkMode;
+      section.dataset.theme = darkMode ? 'dark' : 'light';
+    });
+
+    // KPI counters when stats enter viewport
+    if('IntersectionObserver' in window){
+      const cIo = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            const el = e.target;
+            const final = parseFloat(el.dataset.fanCount);
+            const decimals = parseInt(el.dataset.fanDecimals || '0', 10);
+            const useThousands = final >= 1000;
+            const startTs = performance.now();
+            const dur = 1500;
+            function step(now){
+              const t = Math.min(1,(now-startTs)/dur);
+              const eased = 1 - Math.pow(1-t,3);
+              const v = final * eased;
+              let str = v.toFixed(decimals);
+              if(useThousands && decimals === 0){
+                str = Math.round(v).toLocaleString('en-US');
+              }
+              el.textContent = str;
+              if(t < 1) requestAnimationFrame(step);
+              else el.textContent = useThousands && decimals === 0 ? final.toLocaleString('en-US') : final.toFixed(decimals);
+            }
+            requestAnimationFrame(step);
+            cIo.unobserve(el);
+          }
+        });
+      },{threshold:.5});
+      document.querySelectorAll('[data-fan-count]').forEach(el=>cIo.observe(el));
+    }
+  })();
 
   // === ANNOUNCEMENT BANNER ===
   const ann = document.getElementById('announce');
