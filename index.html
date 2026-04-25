@@ -120,10 +120,11 @@
 
     /* === Buttons === */
     .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:6px;font-weight:600;font-size:.94rem;letter-spacing:0;transition:all .15s ease;white-space:nowrap;cursor:pointer;line-height:1.2;position:relative;overflow:hidden;isolation:isolate}
-    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 1px 2px rgba(99,91,255,.2)}
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 1px 2px rgba(99,91,255,.2);will-change:transform}
     .btn-primary::before{content:'';position:absolute;top:0;left:-150%;width:60%;height:100%;background:linear-gradient(105deg,transparent 25%,rgba(255,255,255,.55) 50%,transparent 75%);transition:left .7s var(--ease);z-index:-1;pointer-events:none}
     .btn-primary:hover::before{left:150%}
-    .btn-primary:hover{background:var(--accent-hover);color:#fff;transform:translateY(-1px);box-shadow:0 6px 14px rgba(99,91,255,.28)}
+    .btn-primary:hover{background:var(--accent-hover);color:#fff;box-shadow:0 6px 14px rgba(99,91,255,.28)}
+    .btn.magnetic{transition:transform .15s var(--ease),background .15s ease,box-shadow .15s ease}
     .btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border-strong)}
     .btn-secondary:hover{border-color:var(--text);color:var(--text)}
     .btn-ghost{background:transparent;color:var(--text-soft);padding:9px 14px}
@@ -410,6 +411,64 @@
     .skip-link:focus{top:8px;color:#fff;outline:2px solid var(--text);outline-offset:2px}
     *:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
 
+    /* === CODE EDITOR MOCK === */
+    .code-section{padding:96px 0;background:linear-gradient(180deg,var(--bg-soft),#fff)}
+    .code-section .container{max-width:1100px}
+    .code-wrap{position:relative;margin-top:48px;background:#0a2540;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 30px 80px rgba(15,30,60,.20),0 12px 32px rgba(15,30,60,.10);border:1px solid #16315a}
+    .code-wrap::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,rgba(99,91,255,.4),transparent 50%,rgba(0,212,193,.3));border-radius:var(--radius-lg);z-index:-1;filter:blur(8px);opacity:.6}
+    .code-tabs{display:flex;align-items:center;background:#062045;border-bottom:1px solid rgba(255,255,255,.06);padding:0 14px}
+    .code-traffic{display:flex;gap:6px;padding:12px 0}
+    .code-traffic i{width:11px;height:11px;border-radius:50%;background:#ff5f56;display:inline-block}
+    .code-traffic i:nth-child(2){background:#ffbd2e}
+    .code-traffic i:nth-child(3){background:#27c93f}
+    .code-tabsrow{display:flex;margin-left:14px;align-items:end}
+    .code-tab{padding:10px 18px;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:rgba(255,255,255,.4);background:transparent;border:0;border-bottom:2px solid transparent;cursor:pointer;transition:color .15s ease,border-color .15s ease;display:inline-flex;align-items:center;gap:8px}
+    .code-tab svg{width:12px;height:12px;color:#9d8fff}
+    .code-tab.active{color:#fff;border-color:#9d8fff}
+    .code-tab:hover{color:rgba(255,255,255,.85)}
+    .code-meta{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.35);padding:12px 8px}
+    .code-meta .dot-live{display:inline-block;width:6px;height:6px;border-radius:50%;background:#27c93f;margin-right:6px;vertical-align:middle;box-shadow:0 0 8px rgba(39,201,63,.5);animation:livedot 1.6s ease-in-out infinite}
+    @keyframes livedot{0%,100%{opacity:1}50%{opacity:.4}}
+    .code-body{display:flex;font-family:'JetBrains Mono',monospace;font-size:.84rem;line-height:1.7;background:#0a2540}
+    .code-gutter{padding:18px 14px 24px 18px;color:rgba(255,255,255,.25);text-align:right;user-select:none;border-right:1px solid rgba(255,255,255,.04);min-width:46px}
+    .code-content{padding:18px 24px 24px;color:rgba(255,255,255,.88);overflow-x:auto;flex:1;min-height:380px}
+    .code-line{opacity:0;transform:translateX(-6px);transition:opacity .3s ease,transform .3s ease;white-space:pre;display:block;min-height:1.7em}
+    .code-line.shown{opacity:1;transform:none}
+    .code-line.typing::after{content:'_';color:#9d8fff;animation:livedot 1s steps(2) infinite;margin-left:2px}
+    .tk-key{color:#9d8fff;font-weight:500}
+    .tk-str{color:#5fffe8}
+    .tk-com{color:#5a7a9e;font-style:italic}
+    .tk-num{color:#ff9d6b}
+    .tk-fn{color:#ffd76b}
+    .tk-op{color:#a0b3cc}
+
+    /* === ENGAGEMENT MODELS (LIQUID TABS) === */
+    .engagement{padding:96px 0;background:#fff}
+    .tabs-bar{position:relative;display:inline-flex;background:var(--bg-soft);border:1px solid var(--border);border-radius:999px;padding:6px;margin:32px 0 36px;box-shadow:var(--shadow-sm)}
+    .tab-btn{position:relative;z-index:2;padding:11px 22px;font-size:.92rem;font-weight:600;color:var(--text-soft);background:transparent;border:0;border-radius:999px;cursor:pointer;transition:color .25s ease;font-family:inherit;white-space:nowrap}
+    .tab-btn.active{color:#fff}
+    .tab-btn:hover:not(.active){color:var(--text)}
+    .tab-bg{position:absolute;top:6px;bottom:6px;background:linear-gradient(135deg,var(--accent),#9d6bff);border-radius:999px;transition:left .45s var(--ease),width .45s var(--ease);z-index:1;box-shadow:0 4px 14px rgba(99,91,255,.35);will-change:left,width}
+    .tab-panes{position:relative;min-height:340px}
+    .tab-pane{display:none;animation:tabFade .45s var(--ease)}
+    .tab-pane.active{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+    @keyframes tabFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .tab-info h3{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:14px;letter-spacing:-.015em}
+    .tab-info p{font-size:1rem;color:var(--text-soft);line-height:1.65;margin-bottom:14px}
+    .tab-info ul{list-style:none;padding:0;margin:18px 0}
+    .tab-info ul li{position:relative;padding-left:26px;margin-bottom:10px;font-size:.94rem;color:var(--text-soft);line-height:1.55}
+    .tab-info ul li::before{content:'';position:absolute;left:0;top:6px;width:16px;height:16px;background:var(--accent);border-radius:50%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M3 8l3 3 6-6'/%3E%3C/svg%3E");background-size:16px;background-position:center}
+    .tab-meta{background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;display:grid;gap:14px}
+    .tab-meta-row{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#fff;border:1px solid var(--border);border-radius:var(--radius)}
+    .tab-meta-row .k{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--text-dim);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+    .tab-meta-row .v{font-size:.92rem;color:var(--text);font-weight:600}
+    .tab-meta-row .v.accent{color:var(--accent)}
+    @media(max-width:760px){
+      .tab-pane.active{grid-template-columns:1fr;gap:24px}
+      .tabs-bar{display:flex;flex-wrap:wrap;border-radius:12px}
+      .tab-btn{flex:1;text-align:center;font-size:.84rem;padding:9px 14px}
+    }
+
     /* === CURSOR FOLLOWER === */
     .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:200;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),background .2s ease,opacity .2s ease;mix-blend-mode:difference;opacity:0}
     .cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--accent);pointer-events:none;z-index:199;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),border-color .2s ease,opacity .25s ease;opacity:0}
@@ -604,10 +663,10 @@
     <ul class="nav-links" role="list">
       <li><a href="#services">Services</a></li>
       <li><a href="#product">Product</a></li>
+      <li><a href="#code">Infra-as-code</a></li>
       <li><a href="#process">Process</a></li>
-      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#engagement">Engagement</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#about">About</a></li>
     </ul>
     <div class="nav-actions">
       <a href="#contact" class="btn btn-ghost">Sign in</a>
@@ -625,7 +684,9 @@
   <ul role="list">
     <li><a href="#services">Services</a></li>
     <li><a href="#product">Product</a></li>
+    <li><a href="#code">Infra-as-code</a></li>
     <li><a href="#process">Process</a></li>
+    <li><a href="#engagement">Engagement</a></li>
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#about">About</a></li>
@@ -652,8 +713,8 @@
     <h1>Mission-critical IT, <span class="accent">delivered.</span></h1>
     <p class="lead">System integration, VDI infrastructure and AI for organizations that can't afford downtime. Trusted by banks, defence primes, public administration and insurance groups across the European Union.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Talk to an architect <span class="btn-arrow">→</span></a>
-      <a href="#product" class="btn btn-secondary">See VDI Agent</a>
+      <a href="#contact" class="btn btn-primary magnetic">Talk to an architect <span class="btn-arrow">→</span></a>
+      <a href="#product" class="btn btn-secondary magnetic">See VDI Agent</a>
     </div>
     <div class="hero-trust" aria-label="Compliance">
       <span>GDPR</span><span class="dot">·</span>
@@ -928,6 +989,30 @@
   </div>
 </section>
 
+<!-- ============= CODE EDITOR ============= -->
+<section class="code-section reveal" id="code">
+  <div class="container">
+    <p class="eyebrow">Infrastructure as code</p>
+    <h2 class="title word-reveal">Audit-ready by default.</h2>
+    <p class="subtitle">Every environment we deploy is reproducible. Versioned in your repo, reviewed by your team, signed off in your audit.</p>
+    <div class="code-wrap" id="codeWrap">
+      <div class="code-tabs">
+        <div class="code-traffic" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="code-tabsrow" role="tablist">
+          <button class="code-tab active" data-codetab="0" role="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M5 4l7 4 7-4M5 12l7 4 7-4M5 20l7-4 7 4"/></svg>main.tf</button>
+          <button class="code-tab" data-codetab="1" role="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>variables.tf</button>
+          <button class="code-tab" data-codetab="2" role="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>outputs.tf</button>
+        </div>
+        <div class="code-meta"><span class="dot-live"></span>terraform plan · 0 errors</div>
+      </div>
+      <div class="code-body">
+        <div class="code-gutter" id="codeGutter" aria-hidden="true"></div>
+        <pre class="code-content" id="codeContent" role="tabpanel"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============= STICKY PROCESS ============= -->
 <section class="process-sticky" id="process">
   <div class="process-sticky-inner" id="psInner">
@@ -962,6 +1047,100 @@
             <p>Run 24/7 with contractual SLAs, or full handover to your internal team with runbooks.</p>
             <span class="step-time">your choice</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= ENGAGEMENT MODELS ============= -->
+<section class="engagement reveal" id="engagement">
+  <div class="container">
+    <p class="eyebrow">Engagement models</p>
+    <h2 class="title word-reveal">Pick the shape that fits.</h2>
+    <p class="subtitle">From a 4-week assessment to a multi-year managed services contract — we adapt to how your finance and procurement teams want to buy.</p>
+    <div class="tabs-bar" id="tabsBar" role="tablist" aria-label="Engagement models">
+      <span class="tab-bg" id="tabBg" aria-hidden="true"></span>
+      <button class="tab-btn active" data-tab="0" role="tab" aria-selected="true">Project-based</button>
+      <button class="tab-btn" data-tab="1" role="tab" aria-selected="false">Dedicated team</button>
+      <button class="tab-btn" data-tab="2" role="tab" aria-selected="false">Managed services</button>
+      <button class="tab-btn" data-tab="3" role="tab" aria-selected="false">Advisory</button>
+    </div>
+
+    <div class="tab-panes">
+      <div class="tab-pane active" data-pane="0" role="tabpanel">
+        <div class="tab-info">
+          <h3>Fixed-scope project</h3>
+          <p>Defined deliverables, fixed price, signed-off acceptance. Best when you know exactly what you need and want budget certainty.</p>
+          <ul>
+            <li>Statement of Work with clear acceptance criteria</li>
+            <li>Sprint-based delivery, demo every 2 weeks</li>
+            <li>Bug fixes and warranty for 90 days post go-live</li>
+            <li>All artefacts in your repos, no lock-in</li>
+          </ul>
+        </div>
+        <div class="tab-meta">
+          <div class="tab-meta-row"><span class="k">Engagement</span><span class="v">3 to 9 months</span></div>
+          <div class="tab-meta-row"><span class="k">Pricing</span><span class="v accent">Fixed price</span></div>
+          <div class="tab-meta-row"><span class="k">Team size</span><span class="v">2-8 FTE</span></div>
+          <div class="tab-meta-row"><span class="k">Best for</span><span class="v">Migrations, new builds</span></div>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-pane="1" role="tabpanel">
+        <div class="tab-info">
+          <h3>Dedicated team</h3>
+          <p>An embedded squad working alongside your team for 6-24 months. Ideal when scope evolves and you need flexible velocity.</p>
+          <ul>
+            <li>Senior architect, engineers, and SRE — assigned, not shared</li>
+            <li>Your tools, your rituals, your standups</li>
+            <li>Monthly capacity invoicing, easy to scale up or down</li>
+            <li>Quarterly performance reviews with your CTO</li>
+          </ul>
+        </div>
+        <div class="tab-meta">
+          <div class="tab-meta-row"><span class="k">Engagement</span><span class="v">6-24 months</span></div>
+          <div class="tab-meta-row"><span class="k">Pricing</span><span class="v accent">Time &amp; materials</span></div>
+          <div class="tab-meta-row"><span class="k">Team size</span><span class="v">3-12 FTE</span></div>
+          <div class="tab-meta-row"><span class="k">Best for</span><span class="v">Long-running platforms</span></div>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-pane="2" role="tabpanel">
+        <div class="tab-info">
+          <h3>Managed services</h3>
+          <p>You own the strategy, we run the platform. 24/7 operations with contractual SLAs and penalties on missed targets.</p>
+          <ul>
+            <li>L1-L3 support, incident management, change management</li>
+            <li>SLA up to 99.99% with credits for breaches</li>
+            <li>Monthly service review with KPIs and trend analysis</li>
+            <li>Patch &amp; vulnerability management included</li>
+          </ul>
+        </div>
+        <div class="tab-meta">
+          <div class="tab-meta-row"><span class="k">Engagement</span><span class="v">12-60 months</span></div>
+          <div class="tab-meta-row"><span class="k">Pricing</span><span class="v accent">Subscription</span></div>
+          <div class="tab-meta-row"><span class="k">SLA target</span><span class="v">99.95% / 99.99%</span></div>
+          <div class="tab-meta-row"><span class="k">Best for</span><span class="v">Mission-critical estates</span></div>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-pane="3" role="tabpanel">
+        <div class="tab-info">
+          <h3>Advisory</h3>
+          <p>Senior architects and security specialists for board reviews, due diligence, second-opinion architectures and audit support.</p>
+          <ul>
+            <li>Independent assessment of existing architectures</li>
+            <li>Pre-merger / pre-investment IT due diligence</li>
+            <li>NIS2 / DORA gap analysis with remediation roadmap</li>
+            <li>Technical interviewer support during your hiring</li>
+          </ul>
+        </div>
+        <div class="tab-meta">
+          <div class="tab-meta-row"><span class="k">Engagement</span><span class="v">2-12 weeks</span></div>
+          <div class="tab-meta-row"><span class="k">Pricing</span><span class="v accent">Day rate</span></div>
+          <div class="tab-meta-row"><span class="k">Team size</span><span class="v">1-3 senior</span></div>
+          <div class="tab-meta-row"><span class="k">Best for</span><span class="v">Audits, due diligence</span></div>
         </div>
       </div>
     </div>
@@ -1293,7 +1472,7 @@
           <input id="f-privacy" name="privacy" type="checkbox" required>
           <label for="f-privacy">I have read and accept the <a href="privacy.html">Privacy Policy</a> and consent to data processing to be contacted back.</label>
         </div>
-        <button type="submit" class="btn btn-primary" id="formSubmit">Send request <span class="btn-arrow">→</span></button>
+        <button type="submit" class="btn btn-primary magnetic" id="formSubmit">Send request <span class="btn-arrow">→</span></button>
         <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
       </form>
       <aside class="contact-aside">
@@ -1408,6 +1587,218 @@
 </div>
 
 <script>
+  // === CODE EDITOR ANIMATION ===
+  // Tokenized lines: array of { tokens: [{cls,text}] } per file/tab
+  // Each token has class for syntax highlighting
+  const CODE_FILES = [
+    // main.tf
+    {
+      name: 'main.tf',
+      lines: [
+        [{c:'tk-com', t:'# AVD host pool — finance, prod (NIS2 / DORA scope)'}],
+        [],
+        [{c:'tk-key', t:'resource'}, {c:'', t:' '}, {c:'tk-str', t:'"azurerm_virtual_desktop_host_pool"'}, {c:'', t:' '}, {c:'tk-str', t:'"finance"'}, {c:'', t:' {'}],
+        [{c:'', t:'  name                = '}, {c:'tk-str', t:'"hp-finance-prod"'}],
+        [{c:'', t:'  location            = '}, {c:'tk-str', t:'"westeurope"'}],
+        [{c:'', t:'  resource_group_name = azurerm_resource_group.avd.name'}],
+        [{c:'', t:'  type                = '}, {c:'tk-str', t:'"Pooled"'}],
+        [{c:'', t:'  load_balancer_type  = '}, {c:'tk-str', t:'"DepthFirst"'}],
+        [{c:'', t:'  maximum_sessions_allowed = '}, {c:'tk-num', t:'12'}],
+        [],
+        [{c:'', t:'  '}, {c:'tk-key', t:'scheduled_agent_updates'}, {c:'', t:' {'}],
+        [{c:'', t:'    enabled  = '}, {c:'tk-key', t:'true'}],
+        [{c:'', t:'    timezone = '}, {c:'tk-str', t:'"Europe/Rome"'}],
+        [{c:'', t:'  }'}],
+        [],
+        [{c:'', t:'  validate_environment = '}, {c:'tk-key', t:'true'}],
+        [{c:'', t:'  tags = '}, {c:'tk-fn', t:'merge'}, {c:'', t:'(local.common_tags, {'}],
+        [{c:'', t:'    Compliance = '}, {c:'tk-str', t:'"NIS2 + DORA"'}],
+        [{c:'', t:'    Owner      = '}, {c:'tk-str', t:'"finance-platform-team"'}],
+        [{c:'', t:'  })'}],
+        [{c:'', t:'}'}],
+      ]
+    },
+    // variables.tf
+    {
+      name: 'variables.tf',
+      lines: [
+        [{c:'tk-com', t:'# Inputs — sourced from Azure DevOps secret store'}],
+        [],
+        [{c:'tk-key', t:'variable'}, {c:'', t:' '}, {c:'tk-str', t:'"environment"'}, {c:'', t:' {'}],
+        [{c:'', t:'  type        = '}, {c:'tk-key', t:'string'}],
+        [{c:'', t:'  description = '}, {c:'tk-str', t:'"prod | preprod | dev"'}],
+        [{c:'', t:'  validation {'}],
+        [{c:'', t:'    condition     = '}, {c:'tk-fn', t:'contains'}, {c:'', t:'(['}, {c:'tk-str', t:'"prod"'}, {c:'', t:', '}, {c:'tk-str', t:'"preprod"'}, {c:'', t:', '}, {c:'tk-str', t:'"dev"'}, {c:'', t:'], var.environment)'}],
+        [{c:'', t:'    error_message = '}, {c:'tk-str', t:'"environment must be prod, preprod or dev."'}],
+        [{c:'', t:'  }'}],
+        [{c:'', t:'}'}],
+        [],
+        [{c:'tk-key', t:'variable'}, {c:'', t:' '}, {c:'tk-str', t:'"data_residency"'}, {c:'', t:' {'}],
+        [{c:'', t:'  type    = '}, {c:'tk-key', t:'string'}],
+        [{c:'', t:'  default = '}, {c:'tk-str', t:'"EU"'}],
+        [{c:'', t:'  description = '}, {c:'tk-str', t:'"contractually enforced via OPA policy"'}],
+        [{c:'', t:'}'}],
+      ]
+    },
+    // outputs.tf
+    {
+      name: 'outputs.tf',
+      lines: [
+        [{c:'tk-com', t:'# Surfaces only what the consuming team needs'}],
+        [],
+        [{c:'tk-key', t:'output'}, {c:'', t:' '}, {c:'tk-str', t:'"host_pool_id"'}, {c:'', t:' {'}],
+        [{c:'', t:'  value       = azurerm_virtual_desktop_host_pool.finance.id'}],
+        [{c:'', t:'  description = '}, {c:'tk-str', t:'"AVD host pool id (downstream session host modules)"'}],
+        [{c:'', t:'}'}],
+        [],
+        [{c:'tk-key', t:'output'}, {c:'', t:' '}, {c:'tk-str', t:'"workspace_url"'}, {c:'', t:' {'}],
+        [{c:'', t:'  value     = '}, {c:'tk-str', t:'"https://client.wvd.microsoft.com"'}],
+        [{c:'', t:'  sensitive = '}, {c:'tk-key', t:'false'}],
+        [{c:'', t:'}'}],
+        [],
+        [{c:'tk-key', t:'output'}, {c:'', t:' '}, {c:'tk-str', t:'"compliance_evidence"'}, {c:'', t:' {'}],
+        [{c:'', t:'  value = {'}],
+        [{c:'', t:'    nis2 = '}, {c:'tk-str', t:'"./evidence/nis2-${var.environment}.json"'}],
+        [{c:'', t:'    dora = '}, {c:'tk-str', t:'"./evidence/dora-${var.environment}.json"'}],
+        [{c:'', t:'  }'}],
+        [{c:'', t:'}'}],
+      ]
+    }
+  ];
+
+  function renderCodeFile(idx, animated){
+    const file = CODE_FILES[idx];
+    const gutter = document.getElementById('codeGutter');
+    const content = document.getElementById('codeContent');
+    if(!gutter || !content) return;
+    gutter.innerHTML = '';
+    content.innerHTML = '';
+    file.lines.forEach((tokens, i)=>{
+      const lineNum = document.createElement('div');
+      lineNum.textContent = i + 1;
+      gutter.appendChild(lineNum);
+      const line = document.createElement('span');
+      line.className = 'code-line';
+      tokens.forEach(tok=>{
+        if(!tok.t){ return; }
+        const span = document.createElement('span');
+        if(tok.c) span.className = tok.c;
+        span.textContent = tok.t;
+        line.appendChild(span);
+      });
+      // Empty line: add zero-width space to maintain height
+      if(tokens.length === 0) line.appendChild(document.createTextNode('\u200b'));
+      content.appendChild(line);
+    });
+    // Trigger cascading reveal
+    const lines = content.querySelectorAll('.code-line');
+    if(animated){
+      lines.forEach((line, i)=>{
+        setTimeout(()=>{
+          line.classList.add('shown');
+          // Last line: add typing cursor briefly
+          if(i === lines.length - 1){
+            line.classList.add('typing');
+            setTimeout(()=>line.classList.remove('typing'), 1800);
+          }
+        }, i * 90);
+      });
+    } else {
+      lines.forEach(line=>line.classList.add('shown'));
+    }
+  }
+
+  // Tabs for code editor
+  const codeTabs = document.querySelectorAll('.code-tab');
+  let currentCodeTab = 0;
+  let codeAnimatedOnce = false;
+  codeTabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      const idx = parseInt(tab.dataset.codetab,10);
+      if(idx === currentCodeTab) return;
+      codeTabs.forEach(t=>t.classList.toggle('active', t.dataset.codetab == idx));
+      currentCodeTab = idx;
+      renderCodeFile(idx, true);
+    });
+  });
+
+  // Animate code on first viewport entry
+  if('IntersectionObserver' in window){
+    const codeWrap = document.getElementById('codeWrap');
+    if(codeWrap){
+      const codeIo = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting && !codeAnimatedOnce){
+            codeAnimatedOnce = true;
+            renderCodeFile(currentCodeTab, true);
+            codeIo.unobserve(e.target);
+          }
+        });
+      },{threshold:.2});
+      codeIo.observe(codeWrap);
+      // Render statically before observe fires (avoids empty box)
+      renderCodeFile(currentCodeTab, false);
+    }
+  } else {
+    renderCodeFile(0, false);
+  }
+
+  // === ENGAGEMENT TABS (LIQUID) ===
+  const tabsBar = document.getElementById('tabsBar');
+  const tabBg = document.getElementById('tabBg');
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+  function moveTabBg(btn){
+    if(!btn || !tabBg || !tabsBar) return;
+    const barRect = tabsBar.getBoundingClientRect();
+    const btnRect = btn.getBoundingClientRect();
+    tabBg.style.left = (btnRect.left - barRect.left) + 'px';
+    tabBg.style.width = btnRect.width + 'px';
+  }
+  if(tabBtns.length && tabBg){
+    // Initial position
+    requestAnimationFrame(()=>moveTabBg(tabsBar.querySelector('.tab-btn.active')));
+    tabBtns.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        tabBtns.forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+        moveTabBg(btn);
+        const idx = btn.dataset.tab;
+        tabPanes.forEach(p=>p.classList.toggle('active', p.dataset.pane === idx));
+      });
+    });
+    window.addEventListener('resize', ()=>{
+      moveTabBg(tabsBar.querySelector('.tab-btn.active'));
+    });
+  }
+
+  // === MAGNETIC BUTTONS ===
+  if(!window.matchMedia('(hover:none)').matches && !('ontouchstart' in window) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.magnetic').forEach(btn=>{
+      const radius = 120;
+      const power = 0.35;
+      let rafId = null;
+      btn.addEventListener('mousemove', (e)=>{
+        const rect = btn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const dist = Math.hypot(dx, dy);
+        if(dist > radius){ btn.style.transform = ''; return; }
+        const factor = (1 - dist / radius) * power;
+        if(rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(()=>{
+          btn.style.transform = `translate(${dx*factor}px, ${dy*factor}px)`;
+        });
+      });
+      btn.addEventListener('mouseleave', ()=>{
+        if(rafId) cancelAnimationFrame(rafId);
+        btn.style.transform = '';
+      });
+    });
+  }
+
   // === CURSOR FOLLOWER ===
   if(!window.matchMedia('(hover:none)').matches && !('ontouchstart' in window) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     const dot = document.getElementById('cursorDot');
