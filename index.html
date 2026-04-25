@@ -411,6 +411,81 @@
     .skip-link:focus{top:8px;color:#fff;outline:2px solid var(--text);outline-offset:2px}
     *:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
 
+    /* === OPS DASHBOARD MOCK === */
+    .ops-dashboard{padding:96px 0;background:linear-gradient(180deg,#fff,var(--bg-soft))}
+    .dashboard-mock{margin-top:48px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);overflow:hidden;position:relative}
+    .dashboard-mock::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,rgba(99,91,255,.25),transparent 60%,rgba(0,212,193,.18));border-radius:var(--radius-xl);z-index:-1;filter:blur(12px);opacity:.7}
+    .dash-header{display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#fff,#fafbff)}
+    .dash-title{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);font-size:1rem;letter-spacing:-.005em}
+    .dash-title svg{width:18px;height:18px;color:var(--accent)}
+    .dash-title .breadcrumb{color:var(--text-dim);font-weight:500;font-family:'JetBrains Mono',monospace;font-size:.78rem}
+    .dash-status{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--green);background:rgba(0,184,148,.1);padding:6px 14px;border-radius:999px;font-weight:700;letter-spacing:.06em}
+    .dash-status .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(0,184,148,.5);animation:livedot 2s ease-in-out infinite}
+    .dash-period{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--text-dim);padding:6px 12px;background:var(--bg-soft);border-radius:6px;border:1px solid var(--border)}
+    .dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+    .dash-kpi{padding:24px 28px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .dash-kpi:last-child{border-right:0}
+    .dash-kpi .k-label{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+    .dash-kpi .k-value{font-size:1.7rem;font-weight:800;color:var(--text);letter-spacing:-.02em;line-height:1;margin-bottom:8px}
+    .dash-kpi .k-trend{display:inline-flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:.74rem;font-weight:700}
+    .dash-kpi .k-trend.up{color:var(--green)}
+    .dash-kpi .k-trend.down{color:var(--green)}
+    .dash-kpi .k-trend.flat{color:var(--text-muted)}
+    .dash-kpi .k-trend svg{width:11px;height:11px}
+    /* Mini sparkline inside KPI */
+    .kpi-spark{height:32px;margin-top:10px;width:100%;display:block}
+    .kpi-spark path{stroke-dasharray:300;stroke-dashoffset:300;animation:sparkdraw 1.4s var(--ease) forwards;animation-play-state:paused}
+    .dashboard-mock.in-view .kpi-spark path{animation-play-state:running}
+    @keyframes sparkdraw{to{stroke-dashoffset:0}}
+    /* Main chart */
+    .dash-chart{padding:28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#fff,rgba(99,91,255,.015))}
+    .chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+    .chart-title{font-weight:700;color:var(--text);font-size:.96rem}
+    .chart-legend{display:flex;gap:14px;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--text-dim)}
+    .chart-legend span{display:inline-flex;align-items:center;gap:6px}
+    .chart-legend .swatch{width:10px;height:10px;border-radius:2px}
+    .chart-legend .sw-actual{background:var(--accent)}
+    .chart-legend .sw-target{background:transparent;border:1.5px dashed var(--border-strong)}
+    .chart-svg{width:100%;height:200px;display:block}
+    .chart-svg .area{fill:url(#chartGrad);opacity:0;transition:opacity .8s ease 1s}
+    .dashboard-mock.in-view .chart-svg .area{opacity:1}
+    .chart-svg .actual{stroke:var(--accent);stroke-width:2;fill:none;stroke-dasharray:1200;stroke-dashoffset:1200;animation:chartdraw 2.2s var(--ease) forwards;animation-play-state:paused}
+    .dashboard-mock.in-view .chart-svg .actual{animation-play-state:running}
+    .chart-svg .target{stroke:var(--border-strong);stroke-width:1.5;stroke-dasharray:6 4;fill:none}
+    .chart-svg .axis{stroke:var(--border);stroke-width:1}
+    .chart-svg .gridline{stroke:var(--border);stroke-width:.5;stroke-dasharray:2 4}
+    .chart-svg text{font-family:'JetBrains Mono',monospace;font-size:9px;fill:var(--text-muted)}
+    .chart-svg .point{fill:var(--accent);opacity:0;animation:pointpop .4s ease forwards}
+    .dashboard-mock.in-view .chart-svg .point{animation-play-state:running}
+    @keyframes chartdraw{to{stroke-dashoffset:0}}
+    @keyframes pointpop{to{opacity:1}}
+    /* Status feed */
+    .dash-feed{padding:20px 28px;display:grid;gap:10px}
+    .feed-row{display:grid;grid-template-columns:auto auto 1fr auto;gap:14px;align-items:center;padding:10px 14px;background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius);font-size:.86rem}
+    .feed-row .ftime{font-family:'JetBrains Mono',monospace;color:var(--text-muted);font-size:.78rem}
+    .feed-row .fdot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+    .feed-row.warn .fdot{background:var(--amber)}
+    .feed-row.info .fdot{background:var(--accent)}
+    .feed-row .fmsg{color:var(--text);font-weight:500}
+    .feed-row .ftag{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);background:var(--accent-soft);padding:3px 8px;border-radius:4px;font-weight:700;letter-spacing:.04em}
+
+    /* === NETWORK CANVAS (contact bg) === */
+    .net-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.42;pointer-events:none;z-index:0}
+    section.contact{position:relative;overflow:hidden}
+    section.contact .container{position:relative;z-index:1}
+
+    @media(max-width:760px){
+      .dash-grid{grid-template-columns:1fr 1fr}
+      .dash-kpi:nth-child(2){border-right:0}
+      .dash-kpi{padding:18px 20px}
+      .dash-kpi .k-value{font-size:1.4rem}
+      .dash-header{padding:16px 20px;flex-wrap:wrap}
+      .dash-period{display:none}
+      .dash-feed{padding:16px}
+      .feed-row{grid-template-columns:auto 1fr;font-size:.82rem}
+      .feed-row .ftag,.feed-row .ftime{display:none}
+    }
+
     /* === CODE EDITOR MOCK === */
     .code-section{padding:96px 0;background:linear-gradient(180deg,var(--bg-soft),#fff)}
     .code-section .container{max-width:1100px}
@@ -665,6 +740,7 @@
       <li><a href="#product">Product</a></li>
       <li><a href="#code">Infra-as-code</a></li>
       <li><a href="#process">Process</a></li>
+      <li><a href="#ops">Operations</a></li>
       <li><a href="#engagement">Engagement</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -907,6 +983,127 @@
         <p class="b-eyebrow">// Handover guarantee</p>
         <h3>No vendor lock-in. Ever.</h3>
         <p>Docs, code and configs ship into your repos, not ours. If you change partner, we deliver a complete handover in 2-4 weeks: runbooks, ADRs, access transitions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= OPS DASHBOARD MOCK ============= -->
+<section class="ops-dashboard reveal" id="ops">
+  <div class="container">
+    <p class="eyebrow">Live operations</p>
+    <h2 class="title word-reveal">Visibility, not vanity metrics.</h2>
+    <p class="subtitle">A snapshot of what your monthly service review actually looks like — every number is contractually backed.</p>
+
+    <div class="dashboard-mock" id="dashboardMock">
+      <div class="dash-header">
+        <div class="dash-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+          Operations overview
+          <span class="breadcrumb">/ finance-prod / Q1 2026</span>
+        </div>
+        <div class="dash-period">Last 30 days</div>
+        <div class="dash-status"><span class="dot"></span>ALL SYSTEMS NOMINAL</div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="dash-kpi">
+          <div class="k-label">// Uptime</div>
+          <div class="k-value" data-count="99.99" data-suffix="%" data-decimals="2">99.99%</div>
+          <div class="k-trend up"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 2l5 5H8v3H4V7H1z"/></svg>+0.01% vs target</div>
+          <svg class="kpi-spark" viewBox="0 0 100 30" preserveAspectRatio="none">
+            <path d="M0 20 L 12 18 L 24 19 L 36 16 L 48 17 L 60 14 L 72 13 L 84 11 L 100 8" stroke="#635bff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="dash-kpi">
+          <div class="k-label">// MTTR</div>
+          <div class="k-value" data-count="8" data-suffix="m">8m</div>
+          <div class="k-trend up"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 10L1 5h3V2h4v3h3z"/></svg>−42% MoM</div>
+          <svg class="kpi-spark" viewBox="0 0 100 30" preserveAspectRatio="none">
+            <path d="M0 8 L 12 14 L 24 12 L 36 18 L 48 16 L 60 20 L 72 19 L 84 22 L 100 24" stroke="#00d4c1" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="dash-kpi">
+          <div class="k-label">// Sev-1 incidents</div>
+          <div class="k-value" data-count="0" data-suffix="">0</div>
+          <div class="k-trend flat"><svg viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="5" width="8" height="2"/></svg>0 in last 90d</div>
+          <svg class="kpi-spark" viewBox="0 0 100 30" preserveAspectRatio="none">
+            <path d="M0 22 L 12 22 L 24 22 L 36 20 L 48 22 L 60 22 L 72 22 L 84 22 L 100 22" stroke="#9d8fff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="dash-kpi">
+          <div class="k-label">// Tickets handled</div>
+          <div class="k-value" data-count="847" data-suffix="">847</div>
+          <div class="k-trend up"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 2l5 5H8v3H4V7H1z"/></svg>+12% MoM</div>
+          <svg class="kpi-spark" viewBox="0 0 100 30" preserveAspectRatio="none">
+            <path d="M0 22 L 12 20 L 24 18 L 36 19 L 48 14 L 60 15 L 72 11 L 84 9 L 100 6" stroke="#ff5996" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="dash-chart">
+        <div class="chart-head">
+          <span class="chart-title">SLA — last 30 days</span>
+          <div class="chart-legend">
+            <span><span class="swatch sw-actual"></span>actual</span>
+            <span><span class="swatch sw-target"></span>contractual target (99.95%)</span>
+          </div>
+        </div>
+        <svg class="chart-svg" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#635bff" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#635bff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Y-axis grid lines -->
+          <line class="gridline" x1="0" y1="50" x2="1000" y2="50"/>
+          <line class="gridline" x1="0" y1="100" x2="1000" y2="100"/>
+          <line class="gridline" x1="0" y1="150" x2="1000" y2="150"/>
+          <!-- Y labels -->
+          <text x="6" y="46">100.00</text>
+          <text x="6" y="96">99.97</text>
+          <text x="6" y="146">99.95</text>
+          <text x="6" y="194">99.90</text>
+          <!-- Target line (dashed) -->
+          <line class="target" x1="0" y1="150" x2="1000" y2="150"/>
+          <!-- Area fill -->
+          <path class="area" d="M 0 60 L 33 55 L 66 62 L 100 50 L 133 58 L 166 45 L 200 52 L 233 40 L 266 48 L 300 35 L 333 42 L 366 30 L 400 38 L 433 45 L 466 32 L 500 28 L 533 35 L 566 40 L 600 32 L 633 38 L 666 28 L 700 22 L 733 30 L 766 25 L 800 18 L 833 28 L 866 20 L 900 15 L 933 22 L 966 12 L 1000 18 L 1000 200 L 0 200 Z"/>
+          <!-- Actual line -->
+          <path class="actual" d="M 0 60 L 33 55 L 66 62 L 100 50 L 133 58 L 166 45 L 200 52 L 233 40 L 266 48 L 300 35 L 333 42 L 366 30 L 400 38 L 433 45 L 466 32 L 500 28 L 533 35 L 566 40 L 600 32 L 633 38 L 666 28 L 700 22 L 733 30 L 766 25 L 800 18 L 833 28 L 866 20 L 900 15 L 933 22 L 966 12 L 1000 18"/>
+          <!-- Last 4 data points highlighted -->
+          <circle class="point" cx="900" cy="15" r="4" style="animation-delay:2.4s"/>
+          <circle class="point" cx="933" cy="22" r="4" style="animation-delay:2.5s"/>
+          <circle class="point" cx="966" cy="12" r="4" style="animation-delay:2.6s"/>
+          <circle class="point" cx="1000" cy="18" r="4" style="animation-delay:2.7s"/>
+        </svg>
+      </div>
+
+      <div class="dash-feed">
+        <div class="feed-row info">
+          <span class="ftime">14:23:08</span>
+          <span class="fdot"></span>
+          <span class="fmsg">Patch Tuesday rolled out across 4,000 AVD session hosts</span>
+          <span class="ftag">CHANGE</span>
+        </div>
+        <div class="feed-row">
+          <span class="ftime">11:48:32</span>
+          <span class="fdot"></span>
+          <span class="fmsg">Quarterly DR drill completed — RTO 4m 12s, target 15m</span>
+          <span class="ftag">DR-TEST</span>
+        </div>
+        <div class="feed-row warn">
+          <span class="ftime">09:14:55</span>
+          <span class="fdot"></span>
+          <span class="fmsg">SOC alert auto-resolved: anomalous login from new geography</span>
+          <span class="ftag">SOC</span>
+        </div>
+        <div class="feed-row">
+          <span class="ftime">08:00:00</span>
+          <span class="fdot"></span>
+          <span class="fmsg">Monthly service review report delivered to client CTO</span>
+          <span class="ftag">REPORT</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1406,6 +1603,7 @@
 
 <!-- ============= CONTACT ============= -->
 <section class="contact" id="contact">
+  <canvas class="net-canvas" id="netCanvas" aria-hidden="true"></canvas>
   <div class="container">
     <p class="eyebrow">Contact</p>
     <h2 class="title">Let's talk about your project</h2>
@@ -1587,6 +1785,132 @@
 </div>
 
 <script>
+  // === DASHBOARD MOCK: KPI count-up + chart draw on viewport ===
+  function animateKpi(el){
+    const final = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const startTs = performance.now();
+    const dur = 1400;
+    function tick(now){
+      const t = Math.min(1, (now - startTs) / dur);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const v = final * eased;
+      el.textContent = v.toFixed(decimals) + suffix;
+      if(t < 1) requestAnimationFrame(tick);
+      else el.textContent = final.toFixed(decimals) + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  if('IntersectionObserver' in window){
+    const dashMock = document.getElementById('dashboardMock');
+    if(dashMock){
+      const dashIo = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            dashMock.classList.add('in-view');
+            dashMock.querySelectorAll('.k-value[data-count]').forEach(animateKpi);
+            dashIo.unobserve(e.target);
+          }
+        });
+      },{threshold:.25});
+      dashIo.observe(dashMock);
+    }
+  }
+
+  // === NETWORK PARTICLES CANVAS (contact section bg) ===
+  const netCanvas = document.getElementById('netCanvas');
+  if(netCanvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const ctx = netCanvas.getContext('2d');
+    let particles = [];
+    let dpr = 1;
+    let isVisible = false;
+    let rafNet = null;
+
+    function initNet(){
+      const rect = netCanvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      netCanvas.width = rect.width * dpr;
+      netCanvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+      const count = Math.min(70, Math.floor((rect.width * rect.height) / 18000));
+      particles = Array.from({length: count}, () => ({
+        x: Math.random() * rect.width,
+        y: Math.random() * rect.height,
+        vx: (Math.random() - .5) * .25,
+        vy: (Math.random() - .5) * .25,
+        r: Math.random() * 1.4 + 0.6
+      }));
+    }
+
+    function tickNet(){
+      const w = netCanvas.width / dpr;
+      const h = netCanvas.height / dpr;
+      ctx.clearRect(0, 0, w, h);
+
+      // Move and draw particles
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if(p.x < 0 || p.x > w) p.vx *= -1;
+        if(p.y < 0 || p.y > h) p.vy *= -1;
+        ctx.fillStyle = '#9d8fff';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Draw connections
+      const maxDist = 130;
+      for(let i = 0; i < particles.length; i++){
+        for(let j = i + 1; j < particles.length; j++){
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.hypot(dx, dy);
+          if(dist < maxDist){
+            const alpha = (1 - dist / maxDist) * 0.35;
+            ctx.strokeStyle = `rgba(157,143,255,${alpha})`;
+            ctx.lineWidth = 0.7;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      if(isVisible) rafNet = requestAnimationFrame(tickNet);
+    }
+
+    initNet();
+    let resizeT = null;
+    window.addEventListener('resize', ()=>{
+      clearTimeout(resizeT);
+      resizeT = setTimeout(()=>{
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        initNet();
+      }, 200);
+    });
+
+    // Pause when out of view (perf)
+    if('IntersectionObserver' in window){
+      const netIo = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            if(!isVisible){ isVisible = true; tickNet(); }
+          } else {
+            isVisible = false;
+            if(rafNet) cancelAnimationFrame(rafNet);
+          }
+        });
+      });
+      netIo.observe(netCanvas.parentElement);
+    } else {
+      isVisible = true;
+      tickNet();
+    }
+  }
+
   // === CODE EDITOR ANIMATION ===
   // Tokenized lines: array of { tokens: [{cls,text}] } per file/tab
   // Each token has class for syntax highlighting
