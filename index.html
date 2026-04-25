@@ -224,8 +224,10 @@
     /* === SECTORS === */
     .sectors-wrap{margin-top:40px}
     .sectors-primary{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}
-    .sector-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all .2s ease;display:flex;align-items:center;gap:14px}
+    .sector-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
+    .sector-card::after{content:'';position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(99,91,255,.10),transparent 40%);opacity:0;transition:opacity .25s ease;pointer-events:none;border-radius:inherit}
     .sector-card:hover{border-color:var(--accent);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+    .sector-card:hover::after{opacity:1}
     .sector-card .ico{width:36px;height:36px;flex-shrink:0;background:var(--accent-soft);color:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center}
     .sector-card .ico svg{width:18px;height:18px}
     .sector-card span{font-weight:600;color:var(--text);font-size:.92rem}
@@ -247,8 +249,10 @@
 
     /* === COMPLIANCE === */
     .compliance-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:48px}
-    .cert{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 18px;text-align:center;transition:all .2s ease}
+    .cert{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 18px;text-align:center;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;position:relative;overflow:hidden}
+    .cert::after{content:'';position:absolute;inset:0;background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(99,91,255,.10),transparent 50%);opacity:0;transition:opacity .25s ease;pointer-events:none;border-radius:inherit}
     .cert:hover{border-color:var(--border-strong);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+    .cert:hover::after{opacity:1}
     .cert .cert-ico{width:36px;height:36px;color:var(--accent);margin:0 auto 12px}
     .cert .cert-ico svg{width:100%;height:100%}
     .cert h4{font-size:.94rem;font-weight:700;color:var(--text);margin-bottom:4px;letter-spacing:-.005em}
@@ -288,8 +292,10 @@
 
     /* === EXPERTISE === */
     .expertise-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
-    .expertise-item{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:all .2s ease}
+    .expertise-item{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;position:relative;overflow:hidden}
+    .expertise-item::after{content:'';position:absolute;inset:0;background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(99,91,255,.08),transparent 50%);opacity:0;transition:opacity .25s ease;pointer-events:none;border-radius:inherit}
     .expertise-item:hover{border-color:var(--border-strong);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+    .expertise-item:hover::after{opacity:1}
     .expertise-item .ico{width:32px;height:32px;color:var(--accent);margin-bottom:14px}
     .expertise-item .ico svg{width:100%;height:100%}
     .expertise-item h4{font-size:.94rem;font-weight:700;color:var(--text);margin-bottom:6px}
@@ -297,6 +303,15 @@
 
     /* === TESTIMONIALS === */
     .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+    /* Secondary marquee row */
+    .tst-marquee{margin-top:32px;overflow:hidden;mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%)}
+    .tst-marquee-track{display:flex;gap:14px;width:max-content;animation:marqueeT 60s linear infinite;will-change:transform}
+    .tst-marquee:hover .tst-marquee-track{animation-play-state:paused}
+    @keyframes marqueeT{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .mini-quote{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;background:#fff;border:1px solid var(--border);border-radius:999px;font-size:.86rem;color:var(--text);box-shadow:var(--shadow-sm);white-space:nowrap;flex-shrink:0;max-width:none}
+    .mini-quote:hover{border-color:var(--border-strong);box-shadow:var(--shadow-md)}
+    .mini-quote .qa{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#9d6bff);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.66rem;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+    .mini-quote em{font-style:normal;color:var(--text-soft);font-size:.78rem;font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
     .testimonial{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;display:flex;flex-direction:column;gap:18px;transition:all .25s ease}
     .testimonial:hover{border-color:var(--border-strong);box-shadow:var(--shadow-lg);transform:translateY(-3px)}
     .testimonial .quote-mark{font-size:2.2rem;color:var(--accent);line-height:.5;font-family:Georgia,serif;margin-bottom:-8px}
@@ -333,8 +348,10 @@
     .about-content{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:48px}
     .about-text p{color:var(--text-soft);margin-bottom:18px;line-height:1.65;font-size:1rem}
     .about-values{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start}
-    .value-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:all .2s ease}
+    .value-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:border-color .2s ease,box-shadow .2s ease;position:relative;overflow:hidden}
+    .value-card::after{content:'';position:absolute;inset:0;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(99,91,255,.10),transparent 45%);opacity:0;transition:opacity .25s ease;pointer-events:none;border-radius:inherit}
     .value-card:hover{border-color:var(--accent);box-shadow:var(--shadow-md)}
+    .value-card:hover::after{opacity:1}
     .value-card h4{font-size:.78rem;font-family:'JetBrains Mono',monospace;color:var(--accent);letter-spacing:.12em;font-weight:700;margin-bottom:8px}
     .value-card p{font-size:.88rem;color:var(--text-soft);line-height:1.55}
 
@@ -400,11 +417,28 @@
     .cookie-actions .btn{padding:9px 18px;font-size:.84rem}
 
     /* === BACK TO TOP === */
-    .back-to-top{position:fixed;right:24px;bottom:24px;z-index:80;width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--border-strong);color:var(--accent);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;box-shadow:var(--shadow-lg)}
+    .back-to-top{position:fixed;left:24px;bottom:24px;z-index:80;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border-strong);color:var(--accent);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease,background .2s ease;box-shadow:var(--shadow-lg)}
     .back-to-top.visible{opacity:1;pointer-events:auto}
     .back-to-top:hover{transform:translateY(-3px);background:var(--accent);color:#fff;border-color:var(--accent)}
-    .back-to-top svg{width:18px;height:18px}
+    .back-to-top svg{width:16px;height:16px}
     body.cookie-shown .back-to-top{bottom:120px}
+
+    /* === FLOATING CTA === */
+    .floating-cta{position:fixed;right:24px;bottom:24px;z-index:80;display:inline-flex;align-items:center;gap:10px;padding:12px 18px 12px 16px;background:#fff;color:var(--text);border:1px solid var(--border);border-radius:999px;font-weight:600;font-size:.92rem;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transform:translateY(20px) scale(.94);transition:opacity .3s var(--ease),transform .3s var(--ease),background .2s ease,color .2s ease,border-color .2s ease;text-decoration:none;cursor:pointer;will-change:transform}
+    .floating-cta.visible{opacity:1;pointer-events:auto;transform:none}
+    .floating-cta:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-3px);box-shadow:0 14px 32px rgba(99,91,255,.32)}
+    .floating-cta .ico{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#9d6bff);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 3px rgba(99,91,255,.15)}
+    .floating-cta .ico svg{width:14px;height:14px}
+    .floating-cta:hover .ico{background:#fff;color:var(--accent);box-shadow:0 0 0 3px rgba(255,255,255,.25)}
+    .floating-cta .arrow{font-size:1.1em;transition:transform .2s ease}
+    .floating-cta:hover .arrow{transform:translateX(2px)}
+    body.cookie-shown .floating-cta{bottom:120px}
+    @media(max-width:760px){
+      .floating-cta{padding:10px 14px;font-size:.84rem}
+      .floating-cta .ico{width:24px;height:24px}
+      body.cookie-shown .floating-cta{bottom:170px}
+      body.cookie-shown .back-to-top{bottom:170px}
+    }
 
     /* === SKIP LINK === */
     .skip-link{position:absolute;top:-44px;left:8px;background:var(--accent);color:#fff;padding:10px 18px;border-radius:6px;font-weight:600;font-size:.84rem;z-index:100;transition:top .15s ease;text-decoration:none}
@@ -705,7 +739,7 @@
       .hero-mesh{animation:none}
     }
     @media print{
-      nav.site-nav,.cookie-banner,.back-to-top,.skip-link,.hamburger,.hero-mesh{display:none!important}
+      nav.site-nav,.cookie-banner,.back-to-top,.floating-cta,.skip-link,.hamburger,.hero-mesh,.cursor-dot,.cursor-ring,.scroll-progress,.tst-marquee,.marquee,.net-canvas{display:none!important}
       body{background:#fff;color:#000}
       section,.hero{padding:18pt 0!important;background:none!important}
       a[href^="http"]::after{content:" ("attr(href)")";font-size:.85em;color:#666}
@@ -1538,6 +1572,29 @@
         </div>
       </article>
     </div>
+
+    <!-- Secondary marquee row with shorter quotes -->
+    <div class="tst-marquee" aria-hidden="true">
+      <div class="tst-marquee-track">
+        <span class="mini-quote"><span class="qa">RM</span>"They show up on a Sunday morning when production is on fire." <em>· Risk Manager, Bank</em></span>
+        <span class="mini-quote"><span class="qa">CO</span>"Documentation alone is worth the contract." <em>· COO, Insurance</em></span>
+        <span class="mini-quote"><span class="qa">CI</span>"Zero overrun on the AVD migration. Unheard of." <em>· CIO, Public Sector</em></span>
+        <span class="mini-quote"><span class="qa">HD</span>"Their architects speak both code and compliance." <em>· Head of Cloud, Telco</em></span>
+        <span class="mini-quote"><span class="qa">CT</span>"Reporting is so good our regulator stopped asking questions." <em>· CTO, Finance</em></span>
+        <span class="mini-quote"><span class="qa">SE</span>"The pen test report scared me. Then they fixed everything." <em>· CISO, Energy</em></span>
+        <span class="mini-quote"><span class="qa">DI</span>"24/7 SOC that actually answers the phone." <em>· IT Director, Healthcare</em></span>
+        <span class="mini-quote"><span class="qa">PM</span>"Budget signed off in one meeting. No surprises after." <em>· Procurement, Defence</em></span>
+        <!-- duplicate set for seamless loop -->
+        <span class="mini-quote"><span class="qa">RM</span>"They show up on a Sunday morning when production is on fire." <em>· Risk Manager, Bank</em></span>
+        <span class="mini-quote"><span class="qa">CO</span>"Documentation alone is worth the contract." <em>· COO, Insurance</em></span>
+        <span class="mini-quote"><span class="qa">CI</span>"Zero overrun on the AVD migration. Unheard of." <em>· CIO, Public Sector</em></span>
+        <span class="mini-quote"><span class="qa">HD</span>"Their architects speak both code and compliance." <em>· Head of Cloud, Telco</em></span>
+        <span class="mini-quote"><span class="qa">CT</span>"Reporting is so good our regulator stopped asking questions." <em>· CTO, Finance</em></span>
+        <span class="mini-quote"><span class="qa">SE</span>"The pen test report scared me. Then they fixed everything." <em>· CISO, Energy</em></span>
+        <span class="mini-quote"><span class="qa">DI</span>"24/7 SOC that actually answers the phone." <em>· IT Director, Healthcare</em></span>
+        <span class="mini-quote"><span class="qa">PM</span>"Budget signed off in one meeting. No surprises after." <em>· Procurement, Defence</em></span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1760,12 +1817,21 @@
   </div>
 </footer>
 
-<!-- ============= BACK TO TOP ============= -->
+<!-- ============= FLOATING CTA + BACK TO TOP ============= -->
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
   </svg>
 </button>
+<a href="#contact" class="floating-cta" id="floatingCta" aria-label="Talk to sales">
+  <span class="ico" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </span>
+  <span>Talk to sales</span>
+  <span class="arrow" aria-hidden="true">→</span>
+</a>
 
 <!-- ============= COOKIE BANNER ============= -->
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie notice" aria-describedby="cookieText">
@@ -2277,6 +2343,17 @@
         card.style.transform = '';
       });
     });
+
+    // === SPOTLIGHT GLOW (no tilt) on lighter card sets ===
+    document.querySelectorAll('.sector-card, .cert, .expertise-item, .value-card, .bento-card').forEach(card=>{
+      card.addEventListener('mousemove', (e)=>{
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mx', `${x}%`);
+        card.style.setProperty('--my', `${y}%`);
+      });
+    });
   }
 
   // === COUNTER ANIMATION ON HERO STATS ===
@@ -2380,6 +2457,27 @@
     }
   });
   btt.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  // === FLOATING CTA visibility ===
+  const fcta = document.getElementById('floatingCta');
+  const contactSection = document.getElementById('contact');
+  let fctaTicking = false;
+  function updateFcta(){
+    if(window.pageYOffset < 1000){ fcta.classList.remove('visible'); return; }
+    // Hide when contact section is in viewport
+    if(contactSection){
+      const r = contactSection.getBoundingClientRect();
+      if(r.top < window.innerHeight * .65){ fcta.classList.remove('visible'); return; }
+    }
+    fcta.classList.add('visible');
+  }
+  window.addEventListener('scroll', ()=>{
+    if(!fctaTicking){
+      requestAnimationFrame(()=>{ updateFcta(); fctaTicking = false; });
+      fctaTicking = true;
+    }
+  }, {passive:true});
+  updateFcta();
 
   // === COOKIE BANNER ===
   const banner = document.getElementById('cookieBanner');
