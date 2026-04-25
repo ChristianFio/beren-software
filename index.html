@@ -19,7 +19,14 @@
   <meta property="og:locale" content="it_IT">
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:site_name" content="Beren Software">
+  <meta property="og:image" content="https://berensoftware.com/og-image.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Beren Software — Integriamo sistemi. Acceleriamo il business.">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://berensoftware.com/og-image.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3l11 6.4v13.2L16 29 5 22.6V9.4z' fill='none' stroke='%2300f5ff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
   <!-- Bunny Fonts: drop-in Google Fonts replacement, GDPR-native, EU-hosted, no IP logging -->
@@ -32,11 +39,34 @@
     "@type":"Organization",
     "name":"Beren Software",
     "url":"https://berensoftware.com",
-    "logo":"https://berensoftware.com/og-logo.png",
+    "logo":"https://berensoftware.com/og-image.svg",
     "email":"info@berensoftware.com",
     "sameAs":["https://vdiagent.ai"],
     "address":{"@type":"PostalAddress","addressCountry":"IT","addressRegion":"EU"},
-    "knowsAbout":["System Integration","Virtual Desktop Infrastructure","Cybersecurity","Cloud Computing","Artificial Intelligence","GDPR","NIS2","DORA"]
+    "knowsAbout":["System Integration","Virtual Desktop Infrastructure","Cybersecurity","Cloud Computing","Artificial Intelligence","GDPR","NIS2","DORA"],
+    "makesOffer":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"System Integration","description":"Integrazione di sistemi eterogenei — ERP, CRM, middleware, API gateway."}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Virtual Desktop Infrastructure","description":"Progettazione e ottimizzazione di ambienti VDI: Citrix, VMware Horizon, AVD, AWS WorkSpaces."}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"AI & Automation","description":"Integrazione di modelli AI nei processi aziendali, LLM on-premise per dati sensibili."}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cybersecurity","description":"Hardening, vulnerability assessment, SOC as a Service. Compliance GDPR, NIS2, DORA."}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cloud & Hybrid","description":"Migrazione e gestione multi-cloud Azure, AWS, GCP con data residency EU."}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Managed Services","description":"24/7 monitoring, incident management, SLA fino al 99.99%."}}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Come gestite la riservatezza in ambienti regolamentati?","acceptedAnswer":{"@type":"Answer","text":"Tutti i progetti partono con un NDA. Per finance, defence e PA usiamo personale verificato (NOS dove richiesto), workstation dedicate, network segregation, e log audit. Possiamo lavorare on-premise o in ambienti tenant-isolated del cliente."}},
+      {"@type":"Question","name":"Quanto dura un progetto tipo?","acceptedAnswer":{"@type":"Answer","text":"Assessment iniziale 2-4 settimane. Implementazioni VDI/cloud da 3 a 12 mesi. Pretendiamo solo 1 sponsor di business e 1 architect del cliente come controparte tecnica."}},
+      {"@type":"Question","name":"Lavorate solo con clienti italiani o anche EU?","acceptedAnswer":{"@type":"Answer","text":"Sede in Italia, operatività in tutta l'Unione Europea. Team multilingue IT/EN/DE. Data residency EU garantita su tutti i progetti."}},
+      {"@type":"Question","name":"Come si confronta il vostro pricing con i big SI?","acceptedAnswer":{"@type":"Answer","text":"Tipicamente 30-50% sotto Accenture/Deloitte/IBM perché non abbiamo overhead di partner globali. Per programmi da centinaia di FTE non siamo il partner giusto. Per progetti da 1-30 FTE siamo molto competitivi."}},
+      {"@type":"Question","name":"Cosa succede se vogliamo cambiare partner?","acceptedAnswer":{"@type":"Answer","text":"Tutta la documentazione e il codice restano del cliente. Niente vendor lock-in: in 2-4 settimane consegniamo handover completo con runbook e architectural decision records."}},
+      {"@type":"Question","name":"Avete certificazioni per compliance NIS2/DORA?","acceptedAnswer":{"@type":"Answer","text":"Stiamo completando ISO 27001 (audit Q3). Per progetti specifici operiamo con framework SOC 2 Type II via partner. Per DORA e NIS2 forniamo gap assessment, ICT third-party register, e supporto audit."}},
+      {"@type":"Question","name":"Perché VDI Agent? Non viola il modello di sicurezza VDI?","acceptedAnswer":{"@type":"Answer","text":"No: VDI Agent gira sulla macchina locale del consulente, non dentro il VDI. Cattura uno screenshot, lo invia a un LLM, e digita la risposta come se fosse l'utente. Zero installazioni nel desktop virtuale, zero footprint sul perimetro."}}
+    ]
   }
   </script>
 
@@ -307,6 +337,41 @@
     .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
     .reveal.visible{opacity:1;transform:none}
 
+    /* === BACK TO TOP === */
+    .back-to-top{position:fixed;right:24px;bottom:24px;z-index:90;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--border-strong);color:var(--cyan);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+    .back-to-top.visible{opacity:1;pointer-events:auto}
+    .back-to-top:hover{transform:translateY(-3px);background:var(--cyan);color:var(--bg)}
+    .back-to-top svg{width:18px;height:18px}
+    /* On mobile, back-to-top moves above cookie banner */
+    body.cookie-shown .back-to-top{bottom:120px}
+
+    /* === FORM VALIDATION STATES === */
+    input:invalid:not(:placeholder-shown),
+    textarea:invalid:not(:placeholder-shown),
+    select:invalid:not(:placeholder-shown){border-color:rgba(255,0,160,.45)}
+    input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,0,160,.12)}
+
+    /* === SKIP LINK (a11y) === */
+    .skip-link{position:absolute;top:-40px;left:8px;background:var(--cyan);color:var(--bg);padding:10px 18px;border-radius:var(--radius);font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:700;letter-spacing:1px;z-index:300;transition:top .2s var(--ease)}
+    .skip-link:focus{top:8px;opacity:1;outline:2px solid var(--text);outline-offset:2px}
+    *:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:2px}
+    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:3px}
+
+    /* === FAQ === */
+    .faq{padding:100px 0;border-top:1px solid var(--border)}
+    .faq-list{max-width:780px;margin:44px auto 0}
+    .faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:border-color .2s}
+    .faq-item:hover{border-color:var(--border-strong)}
+    .faq-item[open]{border-color:var(--border-strong);background:linear-gradient(180deg,rgba(0,245,255,.02),var(--surface))}
+    .faq-q{padding:18px 22px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:.96rem;font-weight:600;color:var(--text);transition:color .2s}
+    .faq-q::-webkit-details-marker{display:none}
+    .faq-q::after{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.4rem;color:var(--cyan);transition:transform .25s var(--ease);font-weight:300;flex-shrink:0}
+    .faq-item[open] .faq-q::after{transform:rotate(45deg)}
+    .faq-q:hover{color:var(--cyan)}
+    .faq-a{padding:0 22px 22px;color:var(--text-soft);font-size:.94rem;line-height:1.7;border-top:1px solid var(--border);padding-top:18px;margin-top:0}
+    .faq-a p{margin-bottom:10px}
+    .faq-a p:last-child{margin-bottom:0}
+
     /* === RESPONSIVE === */
     @media(max-width:980px){
       .product-hero{grid-template-columns:1fr;padding:36px}
@@ -338,6 +403,9 @@
 </head>
 <body>
 
+<!-- Skip link for keyboard / screen-reader users -->
+<a href="#main" class="skip-link" data-i18n="a11y.skip">SALTA AL CONTENUTO</a>
+
 <!-- ===== NAV ===== -->
 <nav class="site-nav" aria-label="Primary">
   <div class="inner">
@@ -349,6 +417,7 @@
       <li><a href="#servizi" data-i18n="nav.services">Servizi</a></li>
       <li><a href="#prodotti" data-i18n="nav.products">Prodotti</a></li>
       <li><a href="#competenze" data-i18n="nav.expertise">Competenze</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
       <li><a href="#chi-siamo" data-i18n="nav.about">Chi siamo</a></li>
       <li><a href="#contatti" data-i18n="nav.contact">Contatti</a></li>
     </ul>
@@ -371,6 +440,7 @@
     <li><a href="#servizi" data-i18n="nav.services">Servizi</a></li>
     <li><a href="#prodotti" data-i18n="nav.products">Prodotti</a></li>
     <li><a href="#competenze" data-i18n="nav.expertise">Competenze</a></li>
+    <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
     <li><a href="#chi-siamo" data-i18n="nav.about">Chi siamo</a></li>
     <li><a href="#contatti" data-i18n="nav.contact">Contatti</a></li>
   </ul>
@@ -382,6 +452,8 @@
     </div>
   </div>
 </div>
+
+<main id="main">
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -679,6 +751,45 @@
   </div>
 </section>
 
+<!-- ===== FAQ ===== -->
+<section class="faq reveal" id="faq">
+  <div class="container">
+    <p class="section-label" data-i18n="faq.label">Domande frequenti</p>
+    <h2 class="section-title" data-i18n="faq.title">Quello che ci chiedono prima di firmare</h2>
+    <p class="section-desc" data-i18n="faq.desc">Risposte concrete alle obiezioni più comuni dai team IT enterprise.</p>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q" data-i18n="faq.q1">Come gestite la riservatezza in ambienti regolamentati?</summary>
+        <div class="faq-a"><p data-i18n="faq.a1">Tutti i progetti partono con un NDA. Per finance, defence e PA usiamo personale verificato (NOS dove richiesto), workstation dedicate, network segregation, e log audit. Possiamo lavorare on-premise o in ambienti tenant-isolated del cliente — niente dati sensibili escono dal perimetro autorizzato.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q" data-i18n="faq.q2">Quanto dura un progetto tipo? E che impegno richiede dal nostro team?</summary>
+        <div class="faq-a"><p data-i18n="faq.a2">Un assessment iniziale dura 2-4 settimane. Implementazioni VDI/cloud variano da 3 a 12 mesi a seconda della scala. Pretendiamo solo: 1 sponsor di business, 1 architect del cliente come controparte tecnica, accessi di lettura ai sistemi rilevanti. Tutto il resto lo gestiamo noi.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q" data-i18n="faq.q3">Lavorate solo con clienti italiani o anche EU?</summary>
+        <div class="faq-a"><p data-i18n="faq.a3">Sede in Italia, operatività in tutta l'Unione Europea. Abbiamo team multilingue (IT/EN/DE) per progetti cross-border. Data residency EU garantita su tutti i progetti — nessun dato cliente lascia l'Unione Europea senza esplicita richiesta scritta.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q" data-i18n="faq.q4">Come si confronta il vostro pricing con i big SI (Accenture, Deloitte, IBM)?</summary>
+        <div class="faq-a"><p data-i18n="faq.a4">Tipicamente 30-50% sotto, perché non abbiamo overhead di partner globali e fatturiamo solo le persone effettivamente sul progetto. In compenso siamo più piccoli: per programmi da centinaia di FTE non siamo il partner giusto. Per progetti da 1-30 FTE siamo molto competitivi.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q" data-i18n="faq.q5">Cosa succede se il progetto fallisce o vogliamo cambiare partner?</summary>
+        <div class="faq-a"><p data-i18n="faq.a5">Tutta la nostra documentazione, codice e configurazioni restano del cliente — versioning su repo del cliente, non sui nostri. Niente vendor lock-in: se decidi di cambiare partner, in 2-4 settimane consegniamo handover completo con runbook, architectural decision records e accessi.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q" data-i18n="faq.q6">Avete certificazioni? Ci servono per la nostra compliance NIS2/DORA.</summary>
+        <div class="faq-a"><p data-i18n="faq.a6">Stiamo completando il percorso ISO 27001 (audit Q3). Per progetti specifici operiamo già con framework SOC 2 Type II via partner certificati. Per DORA e NIS2 forniamo assessment di gap, ICT third-party register, e supporto agli audit del regolatore.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q" data-i18n="faq.q7">Perché VDI Agent? Non viola il modello di sicurezza VDI?</summary>
+        <div class="faq-a"><p data-i18n="faq.a7">No: VDI Agent gira sulla macchina locale del consulente, non dentro il VDI. Cattura uno screenshot, lo invia a un LLM, e digita la risposta come se fosse l'utente. Zero installazioni nel desktop virtuale, zero footprint sul perimetro. È equivalente a un consulente che usa il proprio cervello fuori dal VDI — solo più veloce.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- ===== ABOUT ===== -->
 <section class="about reveal" id="chi-siamo">
   <div class="container">
@@ -808,6 +919,8 @@
   </div>
 </section>
 
+</main>
+
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="container">
@@ -833,6 +946,7 @@
         <h5 data-i18n="ft.co">Azienda</h5>
         <ul>
           <li><a href="#chi-siamo" data-i18n="nav.about">Chi siamo</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
           <li><a href="#contatti" data-i18n="nav.contact">Contatti</a></li>
           <li><a href="https://vdiagent.ai" target="_blank" rel="noopener">VDI Agent</a></li>
           <li><a href="mailto:info@berensoftware.com">info@berensoftware.com</a></li>
@@ -854,6 +968,13 @@
     </div>
   </div>
 </footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" aria-label="Torna in alto" data-i18n-aria="a11y.top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
+  </svg>
+</button>
 
 <!-- ===== COOKIE BANNER ===== -->
 <!-- Banner INFORMATIVO (non consent gate): il sito usa solo cookie tecnici, non richiesti consensi
@@ -879,7 +1000,8 @@
   // ====== I18N ======
   const I18N = {
     it: {
-      "nav.services":"Servizi","nav.products":"Prodotti","nav.expertise":"Competenze","nav.about":"Chi siamo","nav.contact":"Contatti","nav.cta":"CONTATTACI",
+      "a11y.skip":"SALTA AL CONTENUTO",
+      "nav.services":"Servizi","nav.products":"Prodotti","nav.expertise":"Competenze","nav.faq":"FAQ","nav.about":"Chi siamo","nav.contact":"Contatti","nav.cta":"CONTATTACI",
       "hero.badge":"SYSTEM ONLINE · ITALIA · UE",
       "hero.title":"Integriamo sistemi.",
       "hero.title2":"Acceleriamo il business.",
@@ -912,6 +1034,21 @@
       "tst.n2":"Head of Cyber","tst.r2":"Gruppo assicurativo nazionale",
       "tst.q3":"Per noi VDI Agent è un game-changer. Permette ai consulenti di usare l'AI dentro l'ambiente VDI compliant senza compromettere il perimetro di sicurezza.",
       "tst.n3":"Direttore IT","tst.r3":"Difesa & Aerospace",
+      "faq.label":"Domande frequenti","faq.title":"Quello che ci chiedono prima di firmare","faq.desc":"Risposte concrete alle obiezioni più comuni dai team IT enterprise.",
+      "faq.q1":"Come gestite la riservatezza in ambienti regolamentati?",
+      "faq.a1":"Tutti i progetti partono con un NDA. Per finance, defence e PA usiamo personale verificato (NOS dove richiesto), workstation dedicate, network segregation, e log audit. Possiamo lavorare on-premise o in ambienti tenant-isolated del cliente — niente dati sensibili escono dal perimetro autorizzato.",
+      "faq.q2":"Quanto dura un progetto tipo? E che impegno richiede dal nostro team?",
+      "faq.a2":"Un assessment iniziale dura 2-4 settimane. Implementazioni VDI/cloud variano da 3 a 12 mesi a seconda della scala. Pretendiamo solo: 1 sponsor di business, 1 architect del cliente come controparte tecnica, accessi di lettura ai sistemi rilevanti. Tutto il resto lo gestiamo noi.",
+      "faq.q3":"Lavorate solo con clienti italiani o anche EU?",
+      "faq.a3":"Sede in Italia, operatività in tutta l'Unione Europea. Abbiamo team multilingue (IT/EN/DE) per progetti cross-border. Data residency EU garantita su tutti i progetti — nessun dato cliente lascia l'Unione Europea senza esplicita richiesta scritta.",
+      "faq.q4":"Come si confronta il vostro pricing con i big SI (Accenture, Deloitte, IBM)?",
+      "faq.a4":"Tipicamente 30-50% sotto, perché non abbiamo overhead di partner globali e fatturiamo solo le persone effettivamente sul progetto. In compenso siamo più piccoli: per programmi da centinaia di FTE non siamo il partner giusto. Per progetti da 1-30 FTE siamo molto competitivi.",
+      "faq.q5":"Cosa succede se il progetto fallisce o vogliamo cambiare partner?",
+      "faq.a5":"Tutta la nostra documentazione, codice e configurazioni restano del cliente — versioning su repo del cliente, non sui nostri. Niente vendor lock-in: se decidi di cambiare partner, in 2-4 settimane consegniamo handover completo con runbook, architectural decision records e accessi.",
+      "faq.q6":"Avete certificazioni? Ci servono per la nostra compliance NIS2/DORA.",
+      "faq.a6":"Stiamo completando il percorso ISO 27001 (audit Q3). Per progetti specifici operiamo già con framework SOC 2 Type II via partner certificati. Per DORA e NIS2 forniamo assessment di gap, ICT third-party register, e supporto agli audit del regolatore.",
+      "faq.q7":"Perché VDI Agent? Non viola il modello di sicurezza VDI?",
+      "faq.a7":"No: VDI Agent gira sulla macchina locale del consulente, non dentro il VDI. Cattura uno screenshot, lo invia a un LLM, e digita la risposta come se fosse l'utente. Zero installazioni nel desktop virtuale, zero footprint sul perimetro. È equivalente a un consulente che usa il proprio cervello fuori dal VDI — solo più veloce.",
       "ab.label":"Chi siamo","ab.title":"Tecnologia al servizio<br>delle organizzazioni",
       "ab.p1":"Beren Software nasce dall'esperienza sul campo in ambienti enterprise ad alta criticità. Conosciamo le sfide di chi opera con infrastrutture complesse, requisiti di compliance stringenti e zero tolerance per il downtime.",
       "ab.p2":"Non vendiamo tecnologia: risolviamo problemi. Ogni progetto parte dall'analisi dei processi reali, non da slide di marketing. Il nostro vantaggio competitivo è la profondità tecnica — sappiamo scrivere codice, configurare firewall, e parlare con il board nella stessa giornata.",
@@ -931,7 +1068,8 @@
       "cookie.accept":"HO CAPITO"
     },
     en: {
-      "nav.services":"Services","nav.products":"Products","nav.expertise":"Expertise","nav.about":"About","nav.contact":"Contact","nav.cta":"CONTACT US",
+      "a11y.skip":"SKIP TO CONTENT",
+      "nav.services":"Services","nav.products":"Products","nav.expertise":"Expertise","nav.faq":"FAQ","nav.about":"About","nav.contact":"Contact","nav.cta":"CONTACT US",
       "hero.badge":"SYSTEM ONLINE · ITALY · EU",
       "hero.title":"We integrate systems.",
       "hero.title2":"We accelerate business.",
@@ -964,6 +1102,21 @@
       "tst.n2":"Head of Cyber","tst.r2":"National insurance group",
       "tst.q3":"VDI Agent is a game-changer for us. It lets consultants use AI inside the compliant VDI environment without compromising the security perimeter.",
       "tst.n3":"IT Director","tst.r3":"Defence & Aerospace",
+      "faq.label":"Frequently asked questions","faq.title":"What enterprise teams ask before signing","faq.desc":"Concrete answers to the most common objections from enterprise IT teams.",
+      "faq.q1":"How do you handle confidentiality in regulated environments?",
+      "faq.a1":"All projects start with an NDA. For finance, defence and public sector we use vetted personnel (NOS clearance where required), dedicated workstations, network segregation, and audit logs. We can operate on-premise or in client-tenant-isolated environments — no sensitive data leaves the authorized perimeter.",
+      "faq.q2":"How long does a typical project take? What commitment do you need from our team?",
+      "faq.a2":"Initial assessment: 2-4 weeks. VDI/cloud implementations range from 3 to 12 months depending on scale. We only require: 1 business sponsor, 1 client architect as technical counterpart, read access to relevant systems. We handle the rest.",
+      "faq.q3":"Do you work only with Italian clients or also across the EU?",
+      "faq.a3":"Headquartered in Italy, operating across the European Union. We have multilingual teams (IT/EN/DE) for cross-border projects. EU data residency guaranteed on all projects — no client data leaves the EU without explicit written request.",
+      "faq.q4":"How does your pricing compare to the big SIs (Accenture, Deloitte, IBM)?",
+      "faq.a4":"Typically 30-50% lower, because we don't carry global partner overhead and only bill people actually on the project. Trade-off: we're smaller — for programs needing hundreds of FTEs we're not the right partner. For projects in the 1-30 FTE range we're very competitive.",
+      "faq.q5":"What happens if the project fails or we want to switch partners?",
+      "faq.a5":"All documentation, code and configurations remain client-owned — versioned in client repos, not ours. No vendor lock-in: if you decide to change partners, in 2-4 weeks we deliver a full handover with runbooks, architectural decision records and access transitions.",
+      "faq.q6":"Do you hold certifications? We need them for NIS2/DORA compliance.",
+      "faq.a6":"We're finalizing ISO 27001 (audit Q3). For specific projects we already operate under SOC 2 Type II frameworks via certified partners. For DORA and NIS2 we provide gap assessments, ICT third-party registers, and support during regulator audits.",
+      "faq.q7":"Why VDI Agent? Doesn't it violate the VDI security model?",
+      "faq.a7":"No: VDI Agent runs on the consultant's local machine, not inside the VDI. It captures a screenshot, sends it to an LLM, and types the response as if the user typed it. Zero install in the virtual desktop, zero footprint on the perimeter. It's equivalent to a consultant using their own brain outside the VDI — just faster.",
       "ab.label":"About","ab.title":"Technology serving<br>organizations",
       "ab.p1":"Beren Software was born from field experience in mission-critical enterprise environments. We know the challenges of complex infrastructure, strict compliance requirements, and zero tolerance for downtime.",
       "ab.p2":"We don't sell technology: we solve problems. Every project starts with real process analysis, not marketing slides. Our edge is technical depth — we can write code, configure firewalls, and brief the board in the same day.",
@@ -1067,19 +1220,36 @@
     document.querySelectorAll('.hero-stat .num').forEach(el=>cio.observe(el));
   }
 
+  // ====== BACK TO TOP ======
+  const btt = document.getElementById('backToTop');
+  function checkScroll(){
+    if(window.pageYOffset > 600) btt.classList.add('visible');
+    else btt.classList.remove('visible');
+  }
+  let scrollTicking = false;
+  window.addEventListener('scroll', ()=>{
+    if(!scrollTicking){
+      requestAnimationFrame(()=>{ checkScroll(); scrollTicking = false; });
+      scrollTicking = true;
+    }
+  });
+  btt.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+
   // ====== COOKIE BANNER (informativa per cookie tecnici) ======
   const banner = document.getElementById('cookieBanner');
   let cookieAck = null;
   try{ cookieAck = localStorage.getItem('bs-cookie-ack'); }catch(_){}
-  if(!cookieAck){ setTimeout(()=>banner.classList.add('show'), 700); }
+  if(!cookieAck){ setTimeout(()=>{ banner.classList.add('show'); document.body.classList.add('cookie-shown'); }, 700); }
   function ackCookie(){
     try{ localStorage.setItem('bs-cookie-ack', '1'); }catch(_){}
     banner.classList.remove('show');
+    document.body.classList.remove('cookie-shown');
   }
   document.getElementById('cookieAccept').addEventListener('click', ackCookie);
   document.getElementById('cookie-prefs').addEventListener('click', e=>{
     e.preventDefault();
     banner.classList.add('show');
+    document.body.classList.add('cookie-shown');
     banner.scrollIntoView({behavior:'smooth',block:'nearest'});
   });
 
@@ -1087,9 +1257,26 @@
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
   const submitBtn = document.getElementById('formSubmit');
+  // Clear aria-invalid as user types
+  form.querySelectorAll('input,textarea,select').forEach(el=>{
+    el.addEventListener('input', ()=>el.removeAttribute('aria-invalid'));
+  });
+
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
-    if(!form.checkValidity()){ form.reportValidity(); return; }
+    // Manual validation pass to set aria-invalid on first invalid field
+    let firstInvalid = null;
+    form.querySelectorAll('input,textarea,select').forEach(el=>{
+      if(!el.checkValidity()){
+        el.setAttribute('aria-invalid','true');
+        if(!firstInvalid) firstInvalid = el;
+      }
+    });
+    if(firstInvalid){
+      firstInvalid.focus();
+      firstInvalid.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
     const lang = document.documentElement.lang || 'it';
     submitBtn.disabled = true;
     submitBtn.style.opacity = '.7';
