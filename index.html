@@ -220,8 +220,34 @@
     .mobile-drawer li a{display:block;padding:16px 4px;color:var(--text);font-size:1rem;font-weight:500}
     .mobile-drawer .drawer-cta{margin-top:24px;display:block;width:100%;text-align:center;justify-content:center}
 
+    /* === ANNOUNCEMENT BANNER === */
+    .announce{position:relative;z-index:55;background:linear-gradient(90deg,#0a2540,#1a2a52 30%,#2c2566 60%,#0a2540);background-size:200% auto;color:#fff;font-size:.86rem;animation:announceShift 12s linear infinite;display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 20px;text-align:center;flex-wrap:wrap;overflow:hidden}
+    @keyframes announceShift{from{background-position:0% 50%}to{background-position:200% 50%}}
+    .announce::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(157,143,255,.18),transparent);opacity:0;animation:announceShine 6s ease-in-out infinite}
+    @keyframes announceShine{0%,100%{opacity:0;transform:translateX(-100%)}50%{opacity:1;transform:translateX(100%)}}
+    .announce > *{position:relative;z-index:1}
+    .announce-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:rgba(157,143,255,.18);border:1px solid rgba(157,143,255,.3);border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.06em;color:#c4b9ff}
+    .announce-pill .dot{width:6px;height:6px;border-radius:50%;background:#5fffe8;box-shadow:0 0 8px rgba(95,255,232,.6);animation:livedot 1.6s ease-in-out infinite}
+    .announce a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+    .announce a:hover{color:#c4b9ff}
+    .announce-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:6px;background:transparent;color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s ease,color .15s ease}
+    .announce-close:hover{background:rgba(255,255,255,.08);color:#fff}
+    .announce-close svg{width:14px;height:14px}
+    body.announce-hidden .announce{display:none}
+    @media(max-width:520px){.announce{font-size:.78rem}.announce-close{right:6px}}
+
     /* === SCROLL PROGRESS === */
     .scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#635bff,#9d6bff,#00d4c1);width:0%;z-index:60;transition:width .08s linear;box-shadow:0 0 12px rgba(99,91,255,.4);will-change:width}
+
+    /* === HERO LOGO MARK === */
+    .hero-mark{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:84px;height:84px;z-index:2;opacity:0;animation:markFadeIn .5s ease .3s forwards;pointer-events:none}
+    .hero-mark svg{width:100%;height:100%}
+    .hero-mark .hex{fill:none;stroke:url(#heroMarkGrad);stroke-width:2;stroke-linejoin:round;stroke-dasharray:200;stroke-dashoffset:200;animation:hexDraw 1.8s var(--ease) .5s forwards}
+    .hero-mark .core{opacity:0;animation:coreFadeIn .5s ease 2.1s forwards;transform-origin:center;transform-box:fill-box}
+    @keyframes markFadeIn{to{opacity:1}}
+    @keyframes hexDraw{to{stroke-dashoffset:0}}
+    @keyframes coreFadeIn{to{opacity:1}}
+    @media(max-width:760px){.hero-mark{width:56px;height:56px;top:16px}}
 
     /* === HERO === */
     .hero{position:relative;padding:96px 0 88px;background:linear-gradient(180deg,#fff 0%,#fafbff 100%);overflow:hidden}
@@ -326,6 +352,7 @@
     .product-info > p{color:var(--text-soft);margin-bottom:24px;line-height:1.6}
     .product-features{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
     .product-features li{font-size:.88rem;color:var(--text-soft);padding-left:24px;position:relative;line-height:1.5}
+    .product-features li .pf-num{font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--accent);font-size:1.15em;margin-right:2px;display:inline-block;min-width:1.4em}
     .product-features li::before{content:'';position:absolute;left:0;top:6px;width:14px;height:14px;background:var(--green);border-radius:50%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M3 7l3 3 5-5'/%3E%3C/svg%3E");background-size:14px;background-position:center}
 
     /* PRODUCT VISUAL: terminal mock */
@@ -658,8 +685,14 @@
     /* Bento stat card */
     .bento-stat .big{font-size:clamp(2.4rem,4vw,3.6rem);font-weight:800;letter-spacing:-.025em;color:var(--text);line-height:1;background:linear-gradient(135deg,var(--accent),#9d6bff,#00d4c1);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px;animation:gradientShift 11s linear infinite}
     /* Bento dark accent */
-    .bento-dark{background:linear-gradient(135deg,#0a2540,#162a52);color:#fff;border-color:transparent}
-    .bento-dark::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(99,91,255,.3),transparent 70%);bottom:-100px;right:-100px;pointer-events:none;filter:blur(40px)}
+    .bento-dark{background:linear-gradient(135deg,#0a2540,#162a52);color:#fff;border-color:transparent;position:relative}
+    .bento-dark::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(99,91,255,.3),transparent 70%);bottom:-100px;right:-100px;pointer-events:none;filter:blur(40px);z-index:0}
+    .bento-dark > *{position:relative;z-index:1}
+    /* Animated gradient border on span-2 bento cards */
+    .bento-card.span-2{position:relative}
+    .bento-card.span-2::after{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(135deg,transparent,rgba(99,91,255,.5),transparent 50%,rgba(0,212,193,.4),transparent);background-size:200% 200%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s ease;pointer-events:none;animation:borderFlow 6s linear infinite paused}
+    @keyframes borderFlow{from{background-position:0% 50%}to{background-position:200% 50%}}
+    .bento-card.span-2:hover::after{opacity:1;animation-play-state:running}
     .bento-dark h3{color:#fff}
     .bento-dark p{color:rgba(255,255,255,.72)}
     .bento-dark .b-eyebrow{color:#9d8fff}
@@ -809,6 +842,16 @@
 </head>
 <body>
 
+<!-- Top announcement banner -->
+<div class="announce" id="announce" role="region" aria-label="Announcement">
+  <span class="announce-pill"><span class="dot"></span>NEW</span>
+  <span>Available for Q3 2026 engagements.</span>
+  <a href="https://cal.com/berensoftware/discovery" target="_blank" rel="noopener">Book a discovery call <span aria-hidden="true">→</span></a>
+  <button class="announce-close" id="announceClose" aria-label="Close announcement">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+  </button>
+</div>
+
 <a href="#main" class="skip-link">Skip to content</a>
 
 <!-- Scroll progress -->
@@ -930,6 +973,19 @@
 
 <!-- ============= HERO ============= -->
 <section class="hero">
+  <div class="hero-mark" aria-hidden="true">
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <linearGradient id="heroMarkGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#635bff"/>
+          <stop offset="60%" stop-color="#9d6bff"/>
+          <stop offset="100%" stop-color="#00d4c1"/>
+        </linearGradient>
+      </defs>
+      <path class="hex" d="M50 8 L84 28 L84 72 L50 92 L16 72 L16 28 Z"/>
+      <circle class="core" cx="50" cy="50" r="6" fill="url(#heroMarkGrad)" opacity=".7"/>
+    </svg>
+  </div>
   <div class="hero-mesh" id="heroMesh" aria-hidden="true">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -1312,8 +1368,8 @@
         <h3>VDI Agent</h3>
         <p>An AI assistant for locked-down VDI environments. It captures the remote session screen, sends the request to a leading LLM, and types the response directly into the virtual desktop. Zero footprint on the remote machine.</p>
         <ul class="product-features">
-          <li>8 supported VDI platforms</li>
-          <li>11 integrated AI models</li>
+          <li><span class="pf-num" data-count="8">8</span> supported VDI platforms</li>
+          <li><span class="pf-num" data-count="11">11</span> integrated AI models</li>
           <li>Advanced OCR with AI fusion</li>
           <li>Zero install on the VDI</li>
           <li>Encryption at rest</li>
@@ -2494,6 +2550,45 @@
     }
   }, {passive:true});
   updateNavCompact();
+
+  // === ANNOUNCEMENT BANNER ===
+  const ann = document.getElementById('announce');
+  const annClose = document.getElementById('announceClose');
+  let annDismissed = false;
+  try{ annDismissed = localStorage.getItem('bs-ann-q3-2026') === '1'; }catch(_){}
+  if(annDismissed) document.body.classList.add('announce-hidden');
+  if(annClose){
+    annClose.addEventListener('click', ()=>{
+      document.body.classList.add('announce-hidden');
+      try{ localStorage.setItem('bs-ann-q3-2026','1'); }catch(_){}
+    });
+  }
+
+  // === PRODUCT FEATURE COUNTERS ===
+  function animatePfNum(el){
+    const final = parseInt(el.dataset.count, 10);
+    const startTs = performance.now();
+    const dur = 1100;
+    function tick(now){
+      const t = Math.min(1, (now - startTs) / dur);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(final * eased);
+      if(t < 1) requestAnimationFrame(tick);
+      else el.textContent = final;
+    }
+    requestAnimationFrame(tick);
+  }
+  if('IntersectionObserver' in window){
+    const pfIo = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          animatePfNum(e.target);
+          pfIo.unobserve(e.target);
+        }
+      });
+    },{threshold:.5});
+    document.querySelectorAll('.pf-num[data-count]').forEach(el=>pfIo.observe(el));
+  }
 
   // === MEGA MENU ===
   document.querySelectorAll('.has-mega').forEach(li=>{
