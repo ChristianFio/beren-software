@@ -1,0 +1,69 @@
+name: Deploy to Vercel (production)
+
+# Auto-deploys berensofware.com on every push to main.
+# The Vercel project is NOT git-connected (the Vercel GitHub App lacks
+# repo access for ChristianFio/beren-software), so this workflow drives
+# the deploy via the Vercel CLI using a token + org + project id stored
+# as repository secrets.
+#
+# Required secrets (already set):
+#   VERCEL_TOKEN       - Vercel auth token (rotate via https://vercel.com/account/tokens)
+#   VERCEL_ORG_ID      - team_ovKLOZXaTiC8fn6qvIigFjHH
+#   VERCEL_PROJECT_ID  - prj_k2wAYjPSojN3EZNgfrHlZwrGLLm3
+#
+# Concurrency group cancels in-flight deploys when a new commit lands.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: vercel-prod
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to Vercel production
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel environment information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build project artefacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy to Vercel
+        id: deploy
+        run: |
+          URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "Deployed to $URL"
+
+      - name: Summary
+        run: |
+          {
+            echo "### berensofware.com deployed"
+            echo ""
+            echo "- Preview URL: ${{ steps.deploy.outputs.url }}"
+            echo "- Production: https://berensofware.com"
+            echo "- Commit: \`${GITHUB_SHA::7}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
