@@ -1,6 +1,5 @@
 {
   "version": 2,
   "framework": null,
-  "buildCommand": "true",
-  "outputDirectory": "public"
+  "buildCommand": "echo Deployed"
 }
