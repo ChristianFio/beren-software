@@ -1,0 +1,15 @@
+<svg width="356" height="64" viewBox="0 0 356 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Beren.Software">
+  
+  <g transform="translate(0, 0)">
+    <line x1="6" y1="46" x2="58" y2="46" stroke="#0a2540" stroke-width="2" stroke-linecap="square"></line>
+    <path d="M16 14 L24 26 L16 38 L8 26 Z" fill="none" stroke="#0a2540" stroke-width="2"></path>
+    <path d="M32 8  L44 26 L32 44 L20 26 Z" fill="#4cc9e8"></path>
+    <path d="M32 8  L44 26 L32 44 L20 26 Z" fill="none" stroke="#0a2540" stroke-width="1.5" stroke-opacity="0.6"></path>
+    <path d="M48 14 L56 26 L48 38 L40 26 Z" fill="none" stroke="#0a2540" stroke-width="2"></path>
+  </g>
+  <g font-family="Inter Tight, Inter, system-ui, sans-serif" font-size="28" letter-spacing="-0.6">
+    <text x="80" y="40" font-weight="700" fill="#0a2540">Beren</text>
+    <text x="154" y="40" font-weight="700" fill="#4cc9e8">.</text>
+    <text x="162" y="40" font-weight="400" fill="#0a2540" opacity="0.85">Software</text>
+  </g>
+</svg>

@@ -1,11 +1,6 @@
 {
   "version": 2,
   "framework": null,
-  "public": true,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
-  ]
+  "buildCommand": "true",
+  "outputDirectory": "public"
 }
