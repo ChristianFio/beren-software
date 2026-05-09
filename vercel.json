@@ -1,5 +1,4 @@
 {
   "version": 2,
-  "framework": null,
-  "buildCommand": "echo Deployed"
+  "framework": null
 }
