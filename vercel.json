@@ -1,5 +1,11 @@
 {
-  "buildCommand": "echo 'Static site'",
-  "outputDirectory": ".",
-  "public": true
+  "version": 2,
+  "framework": null,
+  "public": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
+  ]
 }
